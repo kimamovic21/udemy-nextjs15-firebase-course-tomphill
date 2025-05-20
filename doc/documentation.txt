@@ -18,3 +18,10 @@ Section 01: Introduction & Setup
 -type command: npx create-next-app@latest .
 -create folder doc and documentation.txt file for project description
 -update description in README.md file
+
+07. Set up Firebase project
+-open web page: https://firebase.google.com/
+-create new project: Udemy Fire Homes Project
+-open project and add authentication options
+-create Firestore Database
+-create Firebase Cloud Storage Bucket
