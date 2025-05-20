@@ -1,0 +1,20 @@
+Next.js 15 & Firebase - Fire Homes Project
+
+
+Section 01: Introduction & Setup
+
+01. Introduction
+
+02. Important! Please read this before you start the course! (GitHub repo etc)
+
+03. Udemy ratings and reviews
+
+04. How this setup differs from traditional React + Firebase apps
+
+05. Overview of stack + helpful tools for this course
+
+06. Set up Next JS project
+-open web page: https://nextjs.org/
+-type command: npx create-next-app@latest .
+-create folder doc and documentation.txt file for project description
+-update description in README.md file
