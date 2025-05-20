@@ -25,3 +25,43 @@ Section 01: Introduction & Setup
 -open project and add authentication options
 -create Firestore Database
 -create Firebase Cloud Storage Bucket
+
+08. Connect Next JS to Firebase
+-select option Add Firebase to your web app
+-open link: https://www.npmjs.com/package/firebase
+-type command: npm install firebase
+-create folder firebase and client.ts file
+-in client.ts file import functions  initializeApp, getApps from package firebase/app
+-import type Auth and function getAuth from package firebase/auth
+-import type FirebaseStorage and function getStorage from package firebase/storage
+-create variable const firebaseConfig 
+-create variable let auth with type Auth
+-create variable let storage with type FirebaseStorage
+-add condition if (!currentApps.length) - else
+-in condition if (!currentApps.length) create variable const app
+-redeclare variables auth and storage
+-in condition else create variable const app
+-redeclare variables auth and storage
+-export functions auth and storage
+-open project settings and generate new private key
+-create .env and example.env variables
+-in .env file create variables: FIREBASE_PRIVATE_KEY_ID, FIREBASE_PRIVATE_KEY, FIREBASE_CLIENT_EMAIL and FIREBASE_CLIENT_ID
+-in example.env file add example of created variable
+-open link: https://www.npmjs.com/package/firebase-admin
+-type command: npm i firebase-admin
+-in folder firebase create server.ts file
+-in server.ts file create variable const serviceAccount
+-import function getApps and type ServiceAccount from package firebase-admin/app
+-import function getFirestore and type Firestore from package firebase-admin/firestore
+-import function function getAuth and type type Auth from package firebase-admin/auth
+-import object admin from package firebase-admin
+-create variable let firestore with type Firestore
+-create variable let auth with type Auth
+-create variable const currentApps 
+-add condition if (!currentApps.length) - else
+-in condition if (!currentApps.length) create variable const app
+-redeclare variables firestore and auth 
+-in condition else create variable const app
+-redeclare variables firestore and auth 
+-in .env.local create variables: FIREBASE_API_KEY, FIREBASE_MESSAGING_SENDER_ID and FIREBASE_APP_ID
+-in example.env file add example of created variable
