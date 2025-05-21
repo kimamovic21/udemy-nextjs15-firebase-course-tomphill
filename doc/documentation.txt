@@ -65,3 +65,18 @@ Section 01: Introduction & Setup
 -redeclare variables firestore and auth 
 -in .env.local create variables: FIREBASE_API_KEY, FIREBASE_MESSAGING_SENDER_ID and FIREBASE_APP_ID
 -in example.env file add example of created variable
+
+
+Section 02: Build the Login with Google functionality
+
+09. Add the navbar with auth links
+-in folder app create folder login and component page.tsx
+-in component login/page.tsx create and export function LoginPage() as default
+-create folder (auth) and move folder login to folder (auth)
+-create folder register and component page.tsx
+-in component register/page.tsx create and export function RegisterPage() as default
+-open route: http://localhost:3000/login
+-open route: http://localhost:3000/register
+-in component layout.tsx import component Link
+-jsx create nav element with Tailwind CSS classes
+-in nav element add component Link and ul element
