@@ -97,6 +97,28 @@ Section 02: Build the Login with Google functionality
 -in anonymous function create variable const provider
 -invoke function signInWithPopup() with two arguments
 -in component login/page.tsx import component ContinueWithGoogleButton
+-open route: http://localhost:3000/login
 -click button Continue with Google
 -open link: https://stackoverflow.com/questions/54636324/firebase-invalid-api-key-error-in-console
 -add to env variables preface NEXT_PUBLIC for those used in client.ts file
+
+11. Create auth context and display logged in user
+-open link: https://stackoverflow.com/questions/76446840/cross-origin-opener-policy-policy-would-block-the-window-closed-call-error-while
+-update next.config.ts file with async function header()
+-open project in Firebase Console App to see users
+-create folder context and component auth.tsx
+-in component auth.tsx import functions createContext, useContext, useEffect and useState from package react
+-import type User from package firebase/auth
+-import function auth from firebase/client.ts file
+-create and export function AuthProvider()
+-create and export function useAuth()
+-in component layout.tsx import function AuthProvider from component auth.tsx
+-in jsx add component AuthProvider with closing and opening tags
+-in component AuthProvider add body element with its content
+-in folder components create component auth-buttons.tsx
+-in component auth-buttons.tsx create and export function AuthButtons() as default
+-import function useAuth from component auth.tsx
+-import component Link from package next/link
+-in function AuthButtons() create variable const auth
+-in jsx add conditions !!auth?.currentUser && and !auth?.currentUser &&
+-in component layout.tsx import function AuthButtons from component auth-buttons.tsx
