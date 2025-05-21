@@ -136,3 +136,11 @@ Section 02: Build the Login with Google functionality
 -in jsx, in event onClick pass the function auth?.loginWithGoogle()
 -add new favicon icon
 -open route: http://localhost:3000/login and click div for logout
+
+13. Improve navbar styling
+-in component layout.tsx import React component Home from package lucide-react
+-add to component Link prop className and Tailwind CSS classes
+-import function Poppins from package next/font/google
+-create variable const poppins
+-add to body element dynamic css class poppins.className
+-in component auth-buttons.tsx, in jsx, add to elements Tailwind CSS classes

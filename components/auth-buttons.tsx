@@ -21,14 +21,23 @@ const AuthButtons = () => {
         </>
       )}
       {!auth?.currentUser && (
-        <>
-          <Link href='/login' className='mr-2'>
+        <div className='flex gap-2 items-center'>
+          <Link
+            href='/login'
+            className='uppercase tracking-widest hover:underline'
+          >
             Login
           </Link>
-          <Link href='/register'>
+          
+          <div className='h-8 w-[1px] bg-white/50' />
+
+          <Link
+            href='/register'
+            className='uppercase tracking-widest hover:underline'
+          >
             Sign up
           </Link>
-        </>
+        </div>
       )}
     </div>
   );
