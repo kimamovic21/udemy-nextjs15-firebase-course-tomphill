@@ -122,3 +122,17 @@ Section 02: Build the Login with Google functionality
 -in function AuthButtons() create variable const auth
 -in jsx add conditions !!auth?.currentUser && and !auth?.currentUser &&
 -in component layout.tsx import function AuthButtons from component auth-buttons.tsx
+
+12. Add logout functionality
+-in component auth.tsx create async function logout
+-in type AuthContextType add type for function logout
+-in prop value add function logout
+-in component auth-buttons.tsx add to div element event onClick
+-in component auth.tsx create async function loginWithGoogle
+-in type AuthContextType add type for function loginWithGoogle
+-in prop value add function loginWithGoogle
+-in component continue-with-google-button.tsx import function useAuth from component auth.tsx
+-in function ContinueWithGoogleButton() create variable const auth
+-in jsx, in event onClick pass the function auth?.loginWithGoogle()
+-add new favicon icon
+-open route: http://localhost:3000/login and click div for logout

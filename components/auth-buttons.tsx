@@ -13,7 +13,9 @@ const AuthButtons = () => {
           <div>
             {auth.currentUser.email}
           </div>
-          <div>
+          <div onClick={() => {
+            auth.logout();
+          }}>
             Logout
           </div>
         </>

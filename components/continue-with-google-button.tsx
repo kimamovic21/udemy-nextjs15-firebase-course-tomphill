@@ -1,15 +1,13 @@
 'use client';
 
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '@/firebase/client';
+import { useAuth } from '@/context/auth';
 import { Button } from './ui/button';
 
 const ContinueWithGoogleButton = () => {
+  const auth = useAuth();
+
   return (
-    <Button onClick={() => {
-      const provider = new GoogleAuthProvider();
-      signInWithPopup(auth, provider);
-    }}>
+    <Button onClick={() => auth?.loginWithGoogle()}>
       Continue with Google
     </Button>
   );

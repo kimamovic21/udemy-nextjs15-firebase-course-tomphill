@@ -6,11 +6,17 @@ import {
   useEffect,
   useState
 } from 'react';
-import { type User } from 'firebase/auth';
+import { 
+  GoogleAuthProvider, 
+  signInWithPopup, 
+  type User 
+} from 'firebase/auth';
 import { auth } from '@/firebase/client';
 
 type AuthContextType = {
   currentUser: User | null;
+  logout: () => Promise<void>;
+  loginWithGoogle: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -30,9 +36,20 @@ export const AuthProvider = ({
     return () => unsubscribe();
   }, []);
 
+  const logout = async () => {
+    await auth.signOut();
+  };
+
+  const loginWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider);
+  };
+
   return (
     <AuthContext.Provider value={{
-      currentUser
+      currentUser,
+      logout,
+      loginWithGoogle
     }}>
       {children}
     </AuthContext.Provider>
