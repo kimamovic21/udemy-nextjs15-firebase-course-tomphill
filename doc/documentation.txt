@@ -80,3 +80,23 @@ Section 02: Build the Login with Google functionality
 -in component layout.tsx import component Link
 -jsx create nav element with Tailwind CSS classes
 -in nav element add component Link and ul element
+
+10. Install shadcn ui and add login with Google
+-open web page: https://ui.shadcn.com/
+-open link: https://ui.shadcn.com/docs/installation/next
+-type command: npx shadcn@latest init
+-open link: https://ui.shadcn.com/docs/components/button
+-type command: npx shadcn@latest add button
+-in folder components create component continue-with-google-button.tsx
+-in component continue-with-google-button.tsx create and export function ContinueWithGoogleButton() as default
+-import functions GoogleAuthProvider and signInWithPopup from package firebase/auth
+-import function auth from firebase/client.ts file
+-import component Button from component ui/button.tsx
+-in jsx add component Button with event onClick
+-in event onClick pass the anonymous function
+-in anonymous function create variable const provider
+-invoke function signInWithPopup() with two arguments
+-in component login/page.tsx import component ContinueWithGoogleButton
+-click button Continue with Google
+-open link: https://stackoverflow.com/questions/54636324/firebase-invalid-api-key-error-in-console
+-add to env variables preface NEXT_PUBLIC for those used in client.ts file

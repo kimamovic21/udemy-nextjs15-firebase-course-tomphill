@@ -1,6 +1,10 @@
+import ContinueWithGoogleButton from '@/components/continue-with-google-button';
+
 const LoginPage = () => {
   return (
-    <div>LoginPage</div>
+    <div>
+      <ContinueWithGoogleButton />
+    </div>
   );
 };
 
