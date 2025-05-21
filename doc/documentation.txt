@@ -144,3 +144,17 @@ Section 02: Build the Login with Google functionality
 -create variable const poppins
 -add to body element dynamic css class poppins.className
 -in component auth-buttons.tsx, in jsx, add to elements Tailwind CSS classes
+
+14. Improve login page styling
+-open link: https://ui.shadcn.com/docs/components/card
+-type command: npx shadcn@latest add card
+-in folder (auth) create and export function AuthLayout() as default
+-add to function AuthLayout() parameter children
+-in jsx, add to parent div element Tailwind CSS classes
+-open route: http://localhost:3000/login
+-open route: http://localhost:3000/register
+-in component ui/button.tsx, in function cva() add Tailwind CSS classes uppercase and tracking-widest 
+-in component login/page.tsx import card components from component ui/card.tsx
+-in jsx add component Card as parent component
+-in globals.css file add new primary color --primary: oklch(29.3% 0.066 243.157)
+-in component continue-with-google-button.tsx add to component Button props variant and className
