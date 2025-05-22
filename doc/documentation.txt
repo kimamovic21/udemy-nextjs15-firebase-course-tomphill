@@ -225,3 +225,20 @@ Section 03: Build the admin functionality and dashboard
 -after condition if add return return NextResponse.next()
 -create and export variable const config 
 -open route: http://localhost:3000/admin-dashboard after logging out from the app
+
+19. Build  the admin dashboard main page
+-open link: https://ui.shadcn.com/docs/components/breadcrumb
+-type command: npx shadcn@latest add breadcrumb
+-in component breadcrumb.tsx create and export function Breadcrumbs()
+-in component admin-dashboard/page.tsx import component Breadcrumbs from component ui/breadcrumb.tsx
+-in function AdminDashboardPage() add component Breadcrumbs with prop items
+-import component Button from component ui/button.tsx
+-import component Link from component next/link
+-import React icon PlusCircleIcon from package lucide-react
+-in jsx create h2 element with Tailwind CSS classes
+-add component Button with Tailwind CSS classes
+-in folder admin-dashboard create component layout.tsx
+-in component layout.tsx create and export function AdminDashboardLayout()
+-add to function AdminDashboardLayout() parameter children
+-in jsx add to parent div element Tailwind CSS classes
+-open route: http://localhost:3000/admin-dashboard
