@@ -174,3 +174,26 @@ type command: npx shadcn@latest add avatar
 -open link: https://stackoverflow.com/questions/77447587/the-images-domains-configuration-is-deprecated-please-use-images-remotepatte
 -in next.config.ts file add object images
 -open route: http://localhost:3000/
+
+
+Section 03: Build the admin functionality and dashboard
+
+16. Add the admin role to a user and save auth tokens in cookies
+-in env.local file add variables ADMIN_EMAIL, NODE_ENV and FIREBASE_CLIENT_X509_CERT_UR
+-in folder context create actions.ts file
+-in actions.ts file import functions cookies and auth
+-create and export async functions setToken() and removeToken()
+-in component auth.tsx import functions setToken and removeToken from actions.ts file
+-import type ParsedToken from package firebase/auth
+-in function useEffect() add condition if (user) - else
+-in server.ts file add process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n')
+-open link: https://stackoverflow.com/questions/70281140/firebaseapperror-failed-to-parse-private-key-error-invalid-pem-formatted-mess
+-in component auth.tsx create state variable const customClaims and set function setCustomClaims()
+-in condition if (user) create four variables and invoke function setCustomClaims()
+-in condition if (user) add condition if (token && refreshToken) 
+-in condition if (token && refreshToken) invoke function await setToken()
+-in condition else invoke function await removeToken()
+-open route: http://localhost:3000/login and sign in
+-open project in production and sign in
+-open link: https://stackoverflow.com/questions/48076968/firebase-auth-unauthorized-domain-domain-is-not-authorized
+-open project on Firebase and production domain
