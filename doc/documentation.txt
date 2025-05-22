@@ -197,3 +197,8 @@ Section 03: Build the admin functionality and dashboard
 -open project in production and sign in
 -open link: https://stackoverflow.com/questions/48076968/firebase-auth-unauthorized-domain-domain-is-not-authorized
 -open project on Firebase and production domain
+
+17. Conditionally render user profile menu items
+-in component auth.tsx in type AuthContextType add type for variable customClaims
+-in prop value add variable customClaims
+-in component auth-buttons.tsx add conditions !!auth?.customClaims?.admin && and !auth?.customClaims?.admin &&

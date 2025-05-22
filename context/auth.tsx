@@ -19,6 +19,7 @@ type AuthContextType = {
   currentUser: User | null;
   logout: () => Promise<void>;
   loginWithGoogle: () => Promise<void>;
+  customClaims: ParsedToken | null;
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -65,7 +66,8 @@ export const AuthProvider = ({
     <AuthContext.Provider value={{
       currentUser,
       logout,
-      loginWithGoogle
+      loginWithGoogle,
+      customClaims
     }}>
       {children}
     </AuthContext.Provider>

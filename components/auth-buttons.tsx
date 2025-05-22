@@ -51,12 +51,22 @@ const AuthButtons = () => {
             <DropdownMenuItem asChild>
               <Link href='/account'>My account</Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link href='/admin-dashboard'>Admin Dashboard</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link href='/account/my-favorites'>My favorites</Link>
-            </DropdownMenuItem>
+
+            {!!auth?.customClaims?.admin && (
+              <DropdownMenuItem asChild>
+                <Link href='/admin-dashboard'>
+                  Admin Dashboard
+                </Link>
+              </DropdownMenuItem>
+            )}
+
+            {!auth?.customClaims?.admin && (
+              <DropdownMenuItem asChild>
+                <Link href='/account/my-favorites'>
+                  My favorites
+                </Link>
+              </DropdownMenuItem>
+            )}
 
             <DropdownMenuItem onClick={async () => await auth.logout()}>
               Logout
@@ -64,6 +74,7 @@ const AuthButtons = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       )}
+      
       {!auth?.currentUser && (
         <div className='flex gap-2 items-center'>
           <Link
