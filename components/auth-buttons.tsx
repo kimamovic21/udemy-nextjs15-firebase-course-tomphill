@@ -1,7 +1,17 @@
 'use client';
 
 import { useAuth } from '@/context/auth';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from './ui/dropdown-menu';
+import { Avatar, AvatarFallback } from './ui/avatar';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const AuthButtons = () => {
   const auth = useAuth();
@@ -9,16 +19,50 @@ const AuthButtons = () => {
   return (
     <div>
       {!!auth?.currentUser && (
-        <>
-          <div>
-            {auth.currentUser.email}
-          </div>
-          <div onClick={() => {
-            auth.logout();
-          }}>
-            Logout
-          </div>
-        </>
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Avatar>
+              {!!auth?.currentUser.photoURL && (
+                <Image
+                  src={auth?.currentUser?.photoURL}
+                  alt={`${auth?.currentUser?.displayName} avatar`}
+                  width={70}
+                  height={70}
+                />
+              )}
+              <AvatarFallback>
+                {(auth?.currentUser?.displayName || auth?.currentUser?.email)?.[0]}
+              </AvatarFallback>
+            </Avatar>
+          </DropdownMenuTrigger>
+
+          <DropdownMenuContent>
+            <DropdownMenuLabel>
+              <div>
+                {auth?.currentUser?.displayName}
+              </div>
+              <div className='font-normal text-xs'>
+                {auth?.currentUser?.email}
+              </div>
+            </DropdownMenuLabel>
+
+            <DropdownMenuSeparator />
+
+            <DropdownMenuItem asChild>
+              <Link href='/account'>My account</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href='/admin-dashboard'>Admin Dashboard</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href='/account/my-favorites'>My favorites</Link>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem onClick={async () => await auth.logout()}>
+              Logout
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       )}
       {!auth?.currentUser && (
         <div className='flex gap-2 items-center'>
@@ -28,7 +72,7 @@ const AuthButtons = () => {
           >
             Login
           </Link>
-          
+
           <div className='h-8 w-[1px] bg-white/50' />
 
           <Link

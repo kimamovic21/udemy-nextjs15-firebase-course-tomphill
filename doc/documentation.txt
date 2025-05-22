@@ -158,3 +158,19 @@ Section 02: Build the Login with Google functionality
 -in jsx add component Card as parent component
 -in globals.css file add new primary color --primary: oklch(29.3% 0.066 243.157)
 -in component continue-with-google-button.tsx add to component Button props variant and className
+
+15. Add the current user dropdown to the navbar
+-open link: https://ui.shadcn.com/docs/components/avatar
+type command: npx shadcn@latest add avatar
+-open link: https://ui.shadcn.com/docs/components/dropdown-menu
+-type command: npx shadcn@latest add dropdown-menu
+-in component auth-buttons.tsx import dropdown and avatar components from folder ui
+-import component Image from package next/image
+-in jsx, in condition !!auth?.currentUser && add dropdown and avatar components
+-in component Avatar add condition !!auth?.currentUser.photoURL && 
+-in component AvatarFallback add condition if there is no users image
+-in component DropdownMenuLabel create two div elements and dynamically show user name and email
+-add four components DropdownMenuItem
+-open link: https://stackoverflow.com/questions/77447587/the-images-domains-configuration-is-deprecated-please-use-images-remotepatte
+-in next.config.ts file add object images
+-open route: http://localhost:3000/
