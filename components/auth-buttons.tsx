@@ -74,7 +74,7 @@ const AuthButtons = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       )}
-      
+
       {!auth?.currentUser && (
         <div className='flex gap-2 items-center'>
           <Link

@@ -202,3 +202,26 @@ Section 03: Build the admin functionality and dashboard
 -in component auth.tsx in type AuthContextType add type for variable customClaims
 -in prop value add variable customClaims
 -in component auth-buttons.tsx add conditions !!auth?.customClaims?.admin && and !auth?.customClaims?.admin &&
+
+18. Add the admin dashboard page + route protections
+-in folder app create folder admin-dashboard and component page.tsx
+-in component admin-dashboard/page.tsx create and export function AdminDashboardPage() as default
+-open route: http://localhost:3000/admin-dashboard
+-open link: https://nextjs.org/docs/app/building-your-application/routing/middleware
+-create middleware.ts file
+-in middleware.ts file import object NextResponse and type NextRequest from package next/server
+-import function cookies from package next/headers
+-create and export async function middleware() with parameter request
+-in function middleware() add condition if (request.method === 'POST')
+-open link: https://www.npmjs.com/package/jose
+-type command: npm i jose
+-import function decodeJwt from package jose
+-create variables const cookieStore and const token
+-add condition if (!token)
+-in condition if (!token) invoke function return NextResponse.redirect()
+-create variable const decodedToken
+-add condition if (!decodedToken.admin)
+-in condition if (!decodedToken.admin) invoke function return NextResponse.redirect()
+-after condition if add return return NextResponse.next()
+-create and export variable const config 
+-open route: http://localhost:3000/admin-dashboard after logging out from the app

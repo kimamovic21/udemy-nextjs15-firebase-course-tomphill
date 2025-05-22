@@ -15,7 +15,10 @@ export const setToken = async ({
     if (!verifiedToken) return;
 
     const userRecord = await auth.getUser((await verifiedToken).uid);
-    if (process.env.ADMIN_EMAIL === userRecord?.email && userRecord?.customClaims?.admin) {
+    if (
+      process.env.ADMIN_EMAIL === userRecord?.email && 
+      !userRecord?.customClaims?.admin) 
+    {
       auth.setCustomUserClaims((await verifiedToken).uid, {
         admin: true,
       });
