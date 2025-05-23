@@ -292,7 +292,7 @@ Section 03: Build the admin functionality and dashboard
 -type command: npx shadcn@latest add select
 -import form components from component ui/form.tsx
 -import select components from component ui/select.tsx
--in fieldset element add component FormField with props control, name and render
+-in fieldset element add component FormField for status with props control, name and render
 -in prop render pass anonymous function with parameter { field }
 -in anonymous function add component FormItem
 -in component new-property-form.tsx import component PropertyForm from component property-form.tsx
@@ -301,3 +301,27 @@ Section 03: Build the admin functionality and dashboard
 -create async function handleSubmit() with parameter data
 -in jsx add to component PropertyForm prop handleSubmit
 -open route: http://localhost:3000/admin-dashboard/new-property
+
+23. Finish rendering the PropertyForm fields
+-in component property-form.tsx add component FormField for address1
+-open link: https://ui.shadcn.com/docs/components/input
+-type command: npx shadcn@latest add input
+-import component Input from component ui/input.tsx
+-add component FormField for address2
+-add component FormField for city
+-add to fieldset element Tailwind CSS flex classes
+-create another fieldset element with Tailwind CSS flex classes
+-in another field element add component FormField for price
+-add component FormField for bedrooms and bathrooms
+-open link: https://ui.shadcn.com/docs/components/textarea
+-type command: npx shadcn@latest add textarea
+-import component Textarea from component ui/textarea
+-add component FormField for description
+-import component Button from component ui/button.tsx
+-in type PropertyFormProps add type from submitButtonLabel
+-add to function PropertyForm() parameter submitButtonLabel
+-in jsx, in form element add component Button with prop type and className
+-in component Button display dynamic value of parameter submitButtonLabel
+-in component new-property-form.tsx import React icon PlusCircleIcon
+-in jsx add to component PropertyForm prop submitButtonLabel
+-open route: http://localhost:3000/admin-dashboard/new-property and click button Create Property

@@ -32,7 +32,7 @@ export const propertyDataSchema = z.object({
 
   description: z
     .string()
-    .min(40, 'Description must contain at least 40 characters')
+    .min(10, 'Description must contain at least 10 characters')
     .max(200, 'Description must contain less than 200 characters'),
 
   bedrooms: z
