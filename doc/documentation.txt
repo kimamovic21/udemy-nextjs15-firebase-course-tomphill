@@ -269,3 +269,35 @@ Section 03: Build the admin functionality and dashboard
 -create folder validation and propertySchema.ts file
 -in propertySchema.ts file import object z from package zod
 -create and export variable const propertyDataSchema
+
+22. Create PropertyForm component and start building form UI
+-in folder components create component property-form.tsx
+-in component property-form.tsx create and export function PropertyForm() as default
+-in component new-property/new-property-form.tsx import component PropertyForm from component property-form.tsx
+-in component property-form import function useForm from package react-hook-form
+-import object z from package zod
+-import function zodResolver from package @hookform/resolvers/zod
+-import variable propertyDataSchema from propertySchema.ts file
+-create variable const form
+-import component Form from component ui/form.tsx
+-in component Form create form element
+-add to component Form prop {...props}
+-add to form element event onSubmit
+-create type PropertyFormProps
+-add to function PropertyForm() parameter handleSubmit with type PropertyFormProps
+-in event onSubmit pass the function form.handleSubmit(handleSubmit)
+-in form element create div element with Tailwind CSS grid classes
+-in div element create fieldset element
+-open link: https://ui.shadcn.com/docs/components/select
+-type command: npx shadcn@latest add select
+-import form components from component ui/form.tsx
+-import select components from component ui/select.tsx
+-in fieldset element add component FormField with props control, name and render
+-in prop render pass anonymous function with parameter { field }
+-in anonymous function add component FormItem
+-in component new-property-form.tsx import component PropertyForm from component property-form.tsx
+-import variable propertyDataSchema from propertySchema.ts file
+-import object z from package zod
+-create async function handleSubmit() with parameter data
+-in jsx add to component PropertyForm prop handleSubmit
+-open route: http://localhost:3000/admin-dashboard/new-property

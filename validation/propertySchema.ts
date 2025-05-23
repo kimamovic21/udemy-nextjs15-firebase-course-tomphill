@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const propertyDataSchema = z.object({
-  address: z
+  address1: z
     .string()
     .min(1, 'Address line 1 must contain a value')
     .max(30, 'Address line 1 must contain less than 30 characters'),
