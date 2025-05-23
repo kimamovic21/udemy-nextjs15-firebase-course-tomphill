@@ -242,3 +242,13 @@ Section 03: Build the admin functionality and dashboard
 -add to function AdminDashboardLayout() parameter children
 -in jsx add to parent div element Tailwind CSS classes
 -open route: http://localhost:3000/admin-dashboard
+
+20. Create the New Property page
+-in folder admin-dashboard create folder new-property and component page.tsx
+-in component new-property/page.tsx create and export function NewPropertyPage() as default
+-open route: http://localhost:3000/admin-dashboard/new-property
+-in component admin-dashboard/page.tsx import component Breadcrumbs from component ui/breadcrumb.tsx
+-in jsx add component Breadcrumbs with prop items
+-in component breadcrumb.tsx, in function map() add component React.Fragment as parent component
+-in component React.Fragment add condition i < items.length - 1 &&
+-in component admin-dashboard/page.tsx update prop href

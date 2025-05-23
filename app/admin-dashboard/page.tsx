@@ -13,7 +13,10 @@ const AdminDashboardPage = () => {
       </h2>
 
       <Button asChild className='inline-flex pl-2 gap-2 mt-4'>
-        <Link href='/admin-dashboard' className='flex items-center'>
+        <Link 
+          href='/admin-dashboard/new-property' 
+          className='flex items-center'
+        >
           <PlusCircleIcon />
           <span>New Property</span>
         </Link>
