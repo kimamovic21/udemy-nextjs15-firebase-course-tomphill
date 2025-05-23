@@ -252,3 +252,20 @@ Section 03: Build the admin functionality and dashboard
 -in component breadcrumb.tsx, in function map() add component React.Fragment as parent component
 -in component React.Fragment add condition i < items.length - 1 &&
 -in component admin-dashboard/page.tsx update prop href
+
+21. Create the new property form schema
+-in component new-property/page.tsx import card components from component ui/card.tsx
+-in folder new-property create component new-property-form.tsx
+-in component new-property-form.tsx create and export function NewPropertyForm() as default
+-add directive 'use client'
+-in component new-property/page.tsx import component NewPropertyForm from component new-property-form.tsx
+-in jsx add component Card
+-in component Card add components Card CardHeader and CardContent
+-in component CardContent add component NewPropertyForm
+-open link: https://ui.shadcn.com/docs/components/form
+-open web page: https://zod.dev
+-open web page: https://react-hook-form.com
+-type command: npx shadcn@latest add form
+-create folder validation and propertySchema.ts file
+-in propertySchema.ts file import object z from package zod
+-create and export variable const propertyDataSchema

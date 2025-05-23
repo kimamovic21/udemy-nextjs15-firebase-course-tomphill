@@ -24,7 +24,7 @@ const Breadcrumbs = ({
                   {item.label}
                 </Link>
               )}
-              
+
               {!item.href && (
                 <BreadcrumbPage>
                   {item.label}
