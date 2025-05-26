@@ -9,7 +9,12 @@ import {
 } from '@/components/ui/table';
 
 const PropertiesTable = async () => {
-  const { data } = await getProperties();
+  const { data, totalPages } = await getProperties({
+    pagination: {
+      pageSize: 2,
+    },
+  });
+  console.log({ data, totalPages });
 
   return (
     <>

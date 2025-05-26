@@ -1,6 +1,6 @@
 import 'server-only';
 import { PropertyStatus } from '@/types/propertyStatus';
-import { firestore } from '@/firebase/server';
+import { firestore, getTotalPages } from '@/firebase/server';
 import { Property } from '@/types/property';
 
 type GetPropertiesOptions = {
@@ -42,6 +42,8 @@ export async function getProperties(options?: GetPropertiesOptions) {
     propertiesQuery = propertiesQuery.where('status', 'in', status);
   };
 
+  const totalPages = await getTotalPages(propertiesQuery, pageSize);
+
   const propertiesSnapshot = await propertiesQuery
     .limit(pageSize)
     .offset((page - 1) * pageSize)
@@ -53,6 +55,7 @@ export async function getProperties(options?: GetPropertiesOptions) {
   } as Property));
 
   return {
-    data: properties
+    data: properties,
+    totalPages: totalPages
   };
 };

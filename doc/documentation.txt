@@ -404,3 +404,11 @@ Section 03: Build the admin functionality and dashboard
 -in anonymous function with parameter doc add type as Property
 -in component properties-table.tsx, in component TableBody invoke function data?.map()
 -open route: http://localhost:3000/admin-dashboard to see information about properties
+
+28. Calculate the total pages for a firestore query
+-create and export function getTotalPages() with parameters firestoreQuery and pageSize
+-in properties.ts file import function getTotalPages from server.ts file
+-create variable const totalPages 
+-in object return add variable totalPages
+-in component properties-table.tsx destructure variable totalPages from function getProperties()
+-open route: http://localhost:3000/admin-dashboard
