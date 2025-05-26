@@ -387,3 +387,20 @@ Section 03: Build the admin functionality and dashboard
 -add to function AdminDashboardPage keyword async
 -create variable const data
 -open route: http://localhost:3000/admin-dashboard to see created properties
+
+27. Render the properties list in a table
+-open link: https://ui.shadcn.com/docs/components/table
+-type command: npx shadcn@latest add table
+-in folder admin-dashboard create component properties-table.tsx
+-in component properties-table.tsx create and export async function PropertiesTable
+-in component admin-dashboard/page.tsx import component PropertiesTable from component properties-table.tsx 
+-open route: http://localhost:3000/admin-dashboard
+-in component properties-table.tsx import table components from component ui/table.tsx
+-in jsx add conditions !data && !!data &&
+-in condition !!data && add table components
+-in folder types create property.ts file
+-in property.ts file create and export type Property
+-in properties.ts file import type Property from property.ts file
+-in anonymous function with parameter doc add type as Property
+-in component properties-table.tsx, in component TableBody invoke function data?.map()
+-open route: http://localhost:3000/admin-dashboard to see information about properties

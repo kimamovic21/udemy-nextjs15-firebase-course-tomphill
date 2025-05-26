@@ -1,6 +1,7 @@
 import 'server-only';
 import { PropertyStatus } from '@/types/propertyStatus';
 import { firestore } from '@/firebase/server';
+import { Property } from '@/types/property';
 
 type GetPropertiesOptions = {
   filters?: {
@@ -49,7 +50,7 @@ export async function getProperties(options?: GetPropertiesOptions) {
   const properties = propertiesSnapshot?.docs?.map((doc) => ({
     id: doc.id,
     ...doc.data(),
-  }));
+  } as Property));
 
   return {
     data: properties
