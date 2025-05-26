@@ -5,12 +5,20 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
+  TableRow,
+  TableFooter
 } from '@/components/ui/table';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
-const PropertiesTable = async () => {
+const PropertiesTable = async ({
+  page = 1
+}: {
+  page?: number
+}) => {
   const { data, totalPages } = await getProperties({
     pagination: {
+      page,
       pageSize: 2,
     },
   });
@@ -56,6 +64,25 @@ const PropertiesTable = async () => {
               );
             })}
           </TableBody>
+
+          <TableFooter>
+            <TableRow>
+              <TableCell colSpan={4} className='text-center'>
+                {Array.from({ length: totalPages })?.map((_, i) => (
+                  <Button
+                    key={i}
+                    asChild
+                    variant='outline'
+                    className='mx-1'
+                  >
+                    <Link href={`/admin-dashboard?page=${i + 1}`}>
+                      {i + 1}
+                    </Link>
+                  </Button>
+                ))}
+              </TableCell>
+            </TableRow>
+          </TableFooter>
         </Table>
       )}
     </>

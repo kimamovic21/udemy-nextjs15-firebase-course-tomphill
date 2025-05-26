@@ -412,3 +412,14 @@ Section 03: Build the admin functionality and dashboard
 -in object return add variable totalPages
 -in component properties-table.tsx destructure variable totalPages from function getProperties()
 -open route: http://localhost:3000/admin-dashboard
+
+29. Render the pagination buttons under the properties table
+-in component properties-table.tsx, add to function PropertiesTable() parameter page with type
+-in component admin-dashboard/page.tsx, add to function AdminDashboardPage() parameter  searchParams
+-create variable const searchParamsValue
+-in jsx, add to component PropertiesTable prop page
+-in component properties-table.tsx import component Button from component button.tsx
+-import component Link from package next/link
+-import component TableFooter from component table.tsx
+-in jsx add component TableFooter 
+-open route: http://localhost:3000/admin-dashboard?page=1 and page=2 to see information about properties

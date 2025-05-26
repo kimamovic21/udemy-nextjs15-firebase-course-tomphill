@@ -4,7 +4,14 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import PropertiesTable from './properties-table';
 
-const AdminDashboardPage = async () => {
+const AdminDashboardPage = async ({
+  searchParams
+}: {
+  searchParams?: Promise<any>;
+}) => {
+  const searchParamsValue = await searchParams;
+  console.log({ searchParamsValue });
+
   return (
     <div>
       <Breadcrumbs items={[{ label: 'Dashboard' }]} />
@@ -23,7 +30,9 @@ const AdminDashboardPage = async () => {
         </Link>
       </Button>
 
-      <PropertiesTable />
+      <PropertiesTable
+        page={searchParamsValue?.page ? parseInt(searchParamsValue.page) : 1}
+      />
     </div>
   );
 };
