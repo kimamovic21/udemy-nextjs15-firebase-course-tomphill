@@ -325,3 +325,24 @@ Section 03: Build the admin functionality and dashboard
 -in component new-property-form.tsx import React icon PlusCircleIcon
 -in jsx add to component PropertyForm prop submitButtonLabel
 -open route: http://localhost:3000/admin-dashboard/new-property and click button Create Property
+
+24. Create the saveNewProperty server action and save data to firestore
+-in folder new-property create actions.ts file
+-in actions.ts file add directive 'use server'
+-create and export async function saveNewProperty() with parameter data
+-import function auth and object firestore from firebase/server.ts file
+-create variable const verifiedToken
+-add condition if (!verifiedToken.admin)
+-import variable propertyDataSchema from propertySchema.ts file
+-create variable const validation
+-add condition if (!validation.success)
+-create variable const property
+-add object return
+-in component new-property-form.tsx import function useAuth from component context/auth.tsx
+-create variable const auth
+-import function saveNewProperty from new-property/actions.ts file
+-create variable const response
+-add condition if (!token) return
+-create variable const response
+-open route: http://localhost:3000/admin-dashboard/new-property and create new property
+-open Firebase project and select Firestore Database
