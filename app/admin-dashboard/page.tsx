@@ -1,9 +1,13 @@
 import { PlusCircleIcon } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
+import { getProperties } from '@/data/properties';
 import Link from 'next/link';
 
-const AdminDashboardPage = () => {
+const AdminDashboardPage = async () => {
+  const data = await getProperties();
+  console.log(data);
+
   return (
     <div>
       <Breadcrumbs items={[{ label: 'Dashboard' }]} />
@@ -13,8 +17,8 @@ const AdminDashboardPage = () => {
       </h2>
 
       <Button asChild className='inline-flex pl-2 gap-2 mt-4'>
-        <Link 
-          href='/admin-dashboard/new-property' 
+        <Link
+          href='/admin-dashboard/new-property'
           className='flex items-center'
         >
           <PlusCircleIcon />

@@ -361,3 +361,29 @@ Section 03: Build the admin functionality and dashboard
 -import function useRouter from package next/navigation
 -create variable const router
 -invoke function router.push()
+-open route: http://localhost:3000/admin-dashboard/new-property and create new property
+-open Firebase project and select Firestore Database
+
+26. Query for properties data
+-create folder data and properties.ts file
+-in properties.ts file add import 'server-only'
+-create folder types and propertyStatus.ts file
+-in propertyStatus.ts file create and export type PropertyStatus
+-in properties.ts file import type PropertyStatus from propertyStatus.ts file
+-create type GetPropertiesOptions
+-create and export async function getProperties()
+-add to function getProperties() parameter options with type GetPropertiesOptions
+-import object firestore from firebase/server.ts file
+-in function getProperties() create variables const page and const pageSize 
+-destructure variables const { minPrice, maxPrice, minBedrooms, status }
+-create variable let propertiesQuery
+-add condition if (minPrice !== null && minPrice !== undefined)
+-add condition if (maxPrice !== null && maxPrice !== undefined)
+-add condition if (minBedrooms !== null && minBedrooms !== undefined)
+-add condition if (status)
+-create variables const propertiesSnapshot and const properties
+-add object return
+-in component admin-dashboard/page.tsx import function getProperties from properties.ts file
+-add to function AdminDashboardPage keyword async
+-create variable const data
+-open route: http://localhost:3000/admin-dashboard to see created properties
