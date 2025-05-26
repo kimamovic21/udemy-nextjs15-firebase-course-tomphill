@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import { Home } from 'lucide-react';
 import { AuthProvider } from '@/context/auth';
+import { Toaster } from 'sonner';
 import './globals.css';
 import Link from 'next/link';
 import AuthButtons from '@/components/auth-buttons';
@@ -35,7 +36,7 @@ const RootLayout = ({
             </Link>
             <ul className='flex gap-6 items-center'>
               <li>
-                <Link 
+                <Link
                   href='/property-search'
                   className='uppercase tracking-widest hover:underline'
                 >
@@ -47,7 +48,10 @@ const RootLayout = ({
               </li>
             </ul>
           </nav>
+
           {children}
+
+          <Toaster richColors closeButton />
         </body>
       </AuthProvider>
     </html>

@@ -346,3 +346,18 @@ Section 03: Build the admin functionality and dashboard
 -create variable const response
 -open route: http://localhost:3000/admin-dashboard/new-property and create new property
 -open Firebase project and select Firestore Database
+
+25. Improve the UI when submitting the new property form
+-in component property-form.tsx add to fieldset element prop disabled
+-add to component Button prop disabled
+-open link: https://ui.shadcn.com/docs/components/sonner
+-type command: npx shadcn@latest add sonner
+-in component layout.tsx import component Toaster from component sonner.tsx
+-in jsx add component Toaster in body element
+-add to component Toaster props richColors and closeButton
+-in component new-property-form.tsx import object sonner from package sonner
+-add condition if (!!response.error)
+-add function toast.success()
+-import function useRouter from package next/navigation
+-create variable const router
+-invoke function router.push()

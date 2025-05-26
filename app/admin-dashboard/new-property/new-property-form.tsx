@@ -1,7 +1,9 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 import { PlusCircleIcon } from 'lucide-react';
+import { toast } from 'sonner';
 import { propertyDataSchema } from '@/validation/propertySchema';
 import { useAuth } from '@/context/auth';
 import { saveNewProperty } from './actions';
@@ -10,13 +12,27 @@ import PropertyForm from '@/components/property-form';
 const NewPropertyForm = () => {
   const auth = useAuth();
 
+  const router = useRouter();
+
   const handleSubmit = async (data: z.infer<typeof propertyDataSchema>) => {
     const token = await auth?.currentUser?.getIdToken();
 
     if (!token) return;
 
     const response = await saveNewProperty({ ...data, token });
-    console.log(response);
+
+    if (!!response.error) {
+      toast.error('Error!', {
+        description: response.error,
+      });
+      return;
+    };
+
+    toast.success('Success!', {
+      description: 'Property created',
+    });
+
+    router.push('/admin-dashboard');
   };
 
   return (
