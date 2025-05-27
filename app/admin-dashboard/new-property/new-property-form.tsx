@@ -6,7 +6,7 @@ import { PlusCircleIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import { propertyDataSchema } from '@/validation/propertySchema';
 import { useAuth } from '@/context/auth';
-import { saveNewProperty } from './actions';
+import { createProperty } from './actions';
 import PropertyForm from '@/components/property-form';
 
 const NewPropertyForm = () => {
@@ -19,7 +19,7 @@ const NewPropertyForm = () => {
 
     if (!token) return;
 
-    const response = await saveNewProperty({ ...data, token });
+    const response = await createProperty(data, token);
 
     if (!!response.error) {
       toast.error('Error!', {

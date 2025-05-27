@@ -464,3 +464,32 @@ Section 03: Build the admin functionality and dashboard
 -in component property-form.tsx, add to variable combinedDefaultValues type z.infer<typeof propertyDataSchema>
 -in component edit-property-form.tsx import React icon SaveIcon from package lucide-react
 -open route: http://localhost:3000/admin-dashboard/edit-property/[propertyId]
+
+32. Create the updateProperty server action
+-in eslint.config.mjs file, in object rules add another rules for unused variables
+-in folder [propertyId] create actions.ts file
+-in actions.ts file create and export async function updateProperty()
+-add directive 'use server'
+-import type Property from property.ts file
+-add to function updateProperty() parameter data and authToken with types
+-import function auth and object firestore from firebase/server.ts file
+-import variable propertyDataSchema from propertySchema.ts file
+-destructure variables const { id, ...propertyData } from parameter data
+-create variable const verifiedToken
+-add condition if (!verifiedToken.admin)
+-create variable const validation
+-add condition if (!validation.success)
+-invoke function await firestore.collection()
+-in component edit-property-form.tsx import function auth from firebase/client.ts file
+-in function handleSubmit() create variable const token
+-add condition if (!token)
+-import function updateProperty from actions.ts file
+-in function handleSubmit() invoke function await updateProperty()
+-import function useRouter from package next/navigation
+-create variable const router
+-in function handleSubmit() invoke function router.push('admin-dashboard')
+-import function toast from package sonner
+-in function handleSubmit() invoke function toast.success()
+-in folder new-property, in actions.ts file, rename the function saveNewProperty() to createProperty()
+-add to function createProperty() second parameter authToken with type string
+-open route: http://localhost:3000/admin-dashboard/edit-property/[propertyId] and update property
