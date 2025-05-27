@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import EditPropertyForm from './edit-property-form';
 
 const EditPropertyPage = async ({
   params
@@ -15,7 +16,6 @@ const EditPropertyPage = async ({
   const paramsValue = await params;
 
   const property = await getPropertyById(paramsValue.propertyId);
-  console.log(property);
 
   return (
     <div>
@@ -34,7 +34,18 @@ const EditPropertyPage = async ({
         </CardHeader>
 
         <CardContent>
-          Edit property form
+          <EditPropertyForm
+            id={property.id}
+            address1={property.address1}
+            address2={property.address2}
+            city={property.city}
+            postcode={property.postcode}
+            bathrooms={property.bathrooms}
+            bedrooms={property.bedrooms}
+            price={property.price}
+            description={property.description}
+            status={property.status}
+          />
         </CardContent>
       </Card>
     </div>

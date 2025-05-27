@@ -443,3 +443,24 @@ Section 03: Build the admin functionality and dashboard
 -import component Breadcrumbs from component breadcrumb.tsx
 -in jsx add component Breadcrumbs with prop items
 -import card components from component card.tsx
+
+31. Create the edit property form
+-in folder [propertyId] create component edit-property-form.tsx
+-in component edit-property-form.tsx create and export function EditPropertyForm()
+-import type Property from property.ts file
+-create type EditPropertyFormProps
+-add to function EditPropertyForm() 10 parameters
+-in component [propertyId]/page.tsx import component EditPropertyForm from component edit-property-form.tsx
+-in component property-form.tsx add in type PropertyFormProps type for defaultValues parameter
+-add to function PropertyForm() parameter defaultValues
+-create variable const combinedDefaultValues
+-in component edit-property-form.tsx import component PropertyForm from component property-form.tsx
+-create async function handleSubmit() with parameter data
+-import object z from package zod
+-import variable propertyDataSchema
+-add to parameter data type z.infer<typeof propertyDataSchema>
+-in jsx add component PropertyForm with props handleSubmit, submitButtonLabel and defaultValues
+-in component [propertyId]/page.tsx, in jsx add to component EditPropertyForm props
+-in component property-form.tsx, add to variable combinedDefaultValues type z.infer<typeof propertyDataSchema>
+-in component edit-property-form.tsx import React icon SaveIcon from package lucide-react
+-open route: http://localhost:3000/admin-dashboard/edit-property/[propertyId]
