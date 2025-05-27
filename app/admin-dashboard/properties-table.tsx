@@ -1,3 +1,4 @@
+import { PencilIcon } from 'lucide-react';
 import { getProperties } from '@/data/properties';
 import {
   Table,
@@ -22,7 +23,6 @@ const PropertiesTable = async ({
       pageSize: 2,
     },
   });
-  console.log({ data, totalPages });
 
   return (
     <>
@@ -39,7 +39,7 @@ const PropertiesTable = async ({
               <TableHead>Address </TableHead>
               <TableHead>Listing Price</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Update</TableHead>
+              <TableHead>Edit</TableHead>
             </TableRow>
           </TableHeader>
 
@@ -59,7 +59,18 @@ const PropertiesTable = async ({
                   <TableCell>{address}</TableCell>
                   <TableCell>{property.price}</TableCell>
                   <TableCell>{property.status}</TableCell>
-                  <TableCell>view / edit</TableCell>
+                  <TableCell>
+                    <span className='mr-1'>view /</span>
+                    <Button
+                      asChild
+                      variant='outline'
+                      size='sm'
+                    >
+                      <Link href={`/admin-dashboard/edit-property/${property.id}`}>
+                        <PencilIcon />
+                      </Link>
+                    </Button>
+                  </TableCell>
                 </TableRow>
               );
             })}

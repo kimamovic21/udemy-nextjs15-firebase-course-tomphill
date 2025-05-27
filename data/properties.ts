@@ -59,3 +59,17 @@ export async function getProperties(options?: GetPropertiesOptions) {
     totalPages: totalPages
   };
 };
+
+export async function getPropertyById(propertyId: string) {
+  const propertySnapshot = await firestore
+    .collection('properties')
+    .doc(propertyId)
+    .get();
+
+  const propertyData = {
+    id: propertySnapshot.id,
+    ...propertySnapshot.data(),
+  } as Property;
+
+  return propertyData;
+};

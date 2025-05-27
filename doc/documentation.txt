@@ -423,3 +423,23 @@ Section 03: Build the admin functionality and dashboard
 -import component TableFooter from component table.tsx
 -in jsx add component TableFooter 
 -open route: http://localhost:3000/admin-dashboard?page=1 and page=2 to see information about properties
+
+30. Create the edit property page
+-open link: https://stackoverflow.com/questions/58467000/how-to-bypass-warning-unexpected-any-specify-a-different-type-typescript-eslin
+-in eslint.config.mjs file add object rules
+-in component properties-table.tsx, in component TableCell for updating property add component Button with props asChild, variant and size
+-open route: http://localhost:3000/admin-dashboard and click edit button
+-create folders edit-property, [propertyId] and component page.tsx
+-in component [propertyId]/page.tsx create and export async function EditPropertyPage() as default
+-open route: http://localhost:3000/admin-dashboard/edit-property/[propertyId]
+-in properties.ts file create and export async function getPropertyById()
+-add to function getPropertyById() parameter propertyId with type string
+-create variables const propertySnapshot and const propertyData
+-add to variable propertyData type as Property
+-add return propertyData
+-in component [propertyId]/page.tsx import function getPropertyById from properties.ts file
+-add to function EditPropertyPage() parameter params
+-create variables const paramsValue and const property
+-import component Breadcrumbs from component breadcrumb.tsx
+-in jsx add component Breadcrumbs with prop items
+-import card components from component card.tsx

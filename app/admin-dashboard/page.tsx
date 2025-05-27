@@ -10,7 +10,6 @@ const AdminDashboardPage = async ({
   searchParams?: Promise<any>;
 }) => {
   const searchParamsValue = await searchParams;
-  console.log({ searchParamsValue });
 
   return (
     <div>
