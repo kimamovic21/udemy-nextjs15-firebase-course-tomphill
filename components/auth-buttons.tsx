@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/auth';
 import {
   DropdownMenu,
@@ -14,6 +15,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const AuthButtons = () => {
+  const router = useRouter();
+
   const auth = useAuth();
 
   return (
@@ -68,7 +71,12 @@ const AuthButtons = () => {
               </DropdownMenuItem>
             )}
 
-            <DropdownMenuItem onClick={async () => await auth.logout()}>
+            <DropdownMenuItem
+              onClick={async () => {
+                await auth.logout();
+                router.refresh();
+              }}
+            >
               Logout
             </DropdownMenuItem>
           </DropdownMenuContent>

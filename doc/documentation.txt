@@ -493,3 +493,15 @@ Section 03: Build the admin functionality and dashboard
 -in folder new-property, in actions.ts file, rename the function saveNewProperty() to createProperty()
 -add to function createProperty() second parameter authToken with type string
 -open route: http://localhost:3000/admin-dashboard/edit-property/[propertyId] and update property
+
+33. Add route protection for all admin routes and auth pages
+-in middleware.ts file add in array matcher route /admin-dashboard/:path*
+-add condition if (token && request.nextUrl.pathname.startsWith('/login'))
+-add condition if (!token && request.nextUrl.pathname.startsWith('/login'))
+-add condition if (token && request.nextUrl.pathname.startsWith('/login'))
+-in component auth-buttons.tsx import function useRouter from package next/navigation
+-in jsx, in event onClick, in anonymous function invoke function router.refresh()
+-in component continue-with-google.tsx, in event onClick add to anonymous function keyword async
+-import function useRouter from package next/navigation
+-create variable const router
+-in anonymous async function invoke function router.refresh()
