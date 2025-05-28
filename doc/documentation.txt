@@ -505,3 +505,29 @@ Section 03: Build the admin functionality and dashboard
 -import function useRouter from package next/navigation
 -create variable const router
 -in anonymous async function invoke function router.refresh()
+-open route: http://localhost:3000/login
+
+34. Improve the styling of the properties table
+-open link: https://www.npmjs.com/package/numeral
+-type command: npm i numeral
+-type command: npm i --save-dev @types/numeral
+-in component properties-table.tsx import function numeral from package numeral
+-in jsx, in component TableCell for price invoke function numeral()
+-in component TableCell for view property add component Button
+-open route: http://localhost:3000/admin-dashboard
+-in folder component create component property-status-badge.tsx
+-in component property-status-badge.tsx create and export function PropertyStatusBadge() as default
+-import type PropertyStatus from propertyStatus.ts file
+-add to function PropertyStatusBadge() parameter status with type PropertyStatus
+-create variable const statusLabel
+-in function PropertyStatusBadge() create variable const label
+-open link: https://ui.shadcn.com/docs/components/badge
+-type command: npx shadcn@latest add badge
+-create variable const variant with object type [key: string]
+-in component property-status-badge.tsx import component Badge from component badge.tsx
+-in jsx add component Badge with prop variant
+-in component properties-table.tsx import component PropertyStatusBadge from component property-status-badge.tsx
+-in component TableCell for status add component PropertyStatusBadge with prop status
+-open route: http://localhost:3000/admin-dashboard/new-property and create properties with all four different status to see badge colors
+-in component Button for displaying pagination add prop disabled
+-open route: http://localhost:3000/admin-dashboard

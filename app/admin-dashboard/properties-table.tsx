@@ -1,4 +1,4 @@
-import { PencilIcon } from 'lucide-react';
+import { PencilIcon, EyeIcon } from 'lucide-react';
 import { getProperties } from '@/data/properties';
 import {
   Table,
@@ -11,6 +11,8 @@ import {
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import numeral from 'numeral';
+import PropertyStatusBadge from '@/components/property-status-badge';
 
 const PropertiesTable = async ({
   page = 1
@@ -56,11 +58,29 @@ const PropertiesTable = async ({
 
               return (
                 <TableRow key={property.id}>
-                  <TableCell>{address}</TableCell>
-                  <TableCell>{property.price}</TableCell>
-                  <TableCell>{property.status}</TableCell>
                   <TableCell>
-                    <span className='mr-1'>view /</span>
+                    {address}
+                  </TableCell>
+
+                  <TableCell>
+                    £{numeral(property.price).format('0,0')}
+                  </TableCell>
+
+                  <TableCell>
+                    <PropertyStatusBadge status={property.status} />
+                  </TableCell>
+
+                  <TableCell className='flex justify-end gap-1'>
+                    <Button
+                      asChild
+                      variant='outline'
+                      size='sm'
+                    >
+                      <Link href={`/property/${property.id}`}>
+                        <EyeIcon />
+                      </Link>
+                    </Button>
+
                     <Button
                       asChild
                       variant='outline'
@@ -82,9 +102,10 @@ const PropertiesTable = async ({
                 {Array.from({ length: totalPages })?.map((_, i) => (
                   <Button
                     key={i}
-                    asChild
+                    asChild={page != i + 1}
                     variant='outline'
                     className='mx-1'
+                    disabled={page === i + 1}
                   >
                     <Link href={`/admin-dashboard?page=${i + 1}`}>
                       {i + 1}
