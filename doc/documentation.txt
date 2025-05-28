@@ -531,3 +531,27 @@ Section 03: Build the admin functionality and dashboard
 -open route: http://localhost:3000/admin-dashboard/new-property and create properties with all four different status to see badge colors
 -in component Button for displaying pagination add prop disabled
 -open route: http://localhost:3000/admin-dashboard
+
+
+Section 04: Build the image uploads functionality
+
+35. Create the image uploader component
+-in folder component create component multi-image-uploader.tsx
+-in component multi-image-uploader.tsx create and export function MultiImageUploader() as default
+-in component multi-image-uploader.tsx add directive 'use client'
+-create type type MultiImageUploaderProps
+-add to function MultiImageUploader() parameters images and onImagesChange with type MultiImageUploaderProps
+-in folder types create imageUpload.ts file
+-in imageUpload.ts file create and export type ImageUpload
+-in component multi-image-uploader.tsx import type ImageUpload from imageUpload.ts file
+-import component Button from component button.tsx
+-in jsx add to parent div element Tailwind CSS classes
+-in div element add component Button with type button
+-create input element with attributes ref, type, multiple, accept and className
+-import function useRef from package react
+-create variable const uploadInputRef
+-add to component Button event onClick
+-in event onClick invoke anonymous function
+-in anonymous function invoke function uploadInputRef.current.click()
+-in component property-form.tsx import function MultiImageUploader from component multi-image-uploader.tsx
+-in jsx add component MultiImageUploader with prop onImagesChange

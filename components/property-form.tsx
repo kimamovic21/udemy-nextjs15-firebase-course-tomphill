@@ -22,6 +22,7 @@ import {
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
+import MultiImageUploader from './multi-image-uploader';
 
 type PropertyFormProps = {
   handleSubmit: (data: z.infer<typeof propertyDataSchema>) => void;
@@ -228,7 +229,7 @@ const PropertyForm = ({
                     <Textarea
                       {...field}
                       rows={5}
-                      className='resize-none'
+                      className='resize-none h-25'
                     />
                   </FormControl>
                   <FormMessage />
@@ -237,6 +238,8 @@ const PropertyForm = ({
             />
           </fieldset>
         </div>
+
+        <MultiImageUploader onImagesChange={() => { }} />
 
         <Button
           type='submit'
