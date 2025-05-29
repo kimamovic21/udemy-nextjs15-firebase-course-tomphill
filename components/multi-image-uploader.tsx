@@ -132,6 +132,7 @@ const MultiImageUploader = ({
                   )}
                 </Draggable>
               ))}
+              {provided.placeholder}
             </div>
           )}
         </Droppable>

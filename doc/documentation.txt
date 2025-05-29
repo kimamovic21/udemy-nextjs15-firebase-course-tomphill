@@ -593,6 +593,7 @@ Section 04: Build the image uploads functionality
 -create div element for displaying p element and component Badge 
 -import React icons XIcon and from package lucide-react
 -create div element with Tailwind CSS flex classes for displaying React icons
+-open route: http://localhost:3000/admin-dashboard/new-property and click button Upload images
 
 38. Implement reorder and delete images
 -in component multi-image-uploader.tsx import type DropResult from package hello-pangea/dnd
@@ -610,3 +611,36 @@ Section 04: Build the image uploads functionality
 -invoke function onImagesChange(updatedImages)
 -in jsx add to button element event onClick
 -in event onClick pass the function handleDeleteImage(image.id)
+-open route: http://localhost:3000/admin-dashboard/new-property and click button Upload images
+
+39. Implement upload images to firebase storage for new properties
+-in component multi-image-uploader, in jsx add {provided.placeholder}
+-in Firebase project, open Firebase storage and add rules for allow read and allow write
+-in component new-property-form.tsx import variable propertySchema from propertySchema.ts file
+-in function handleSubmit() destructure variables const { images, ...rest } from parameter data
+-import type UploadTask from package firebase/storage
+-create variable const uploadTasks with type UploadTask[]
+-create variable const paths with type string[]
+-invoke function images.forEach()
+-in function forEach() add condition if (image.file)
+-in condition if (image.file) create variable const path
+-invoke function paths.push(path)
+-import functions ref and uploadBytesResumable from package firebase/storage
+-import object storage from firebase/client.ts file
+-create variable const storageRef
+-invoke function uploadTasks.push()
+-invoke function await Promise.all(uploadTasks)
+-in new-property/actions.ts file import object z from package zod
+-create and export async function savePropertyImages() with two parameters
+-in function savePropertyImages() first parameter is object and second parameter is authToken
+-create variable const verifiedToken
+-add condition if (!verifiedToken.admin)
+-create variable const schema
+-create variable const validation
+-add condition if(!validation.success)
+-invoke function await firestore
+-in component new-property-form.tsx import function savePropertyImages from actions.ts file
+-invoke function await savePropertyImages()
+-add condition if (!!response.error || !response.propertyId)
+-open route: http://localhost:3000/admin-dashboard/new-property add information about property with images and click button Create Property
+-open Firebase storage to see uploaded images
