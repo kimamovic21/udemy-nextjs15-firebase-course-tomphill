@@ -555,3 +555,21 @@ Section 04: Build the image uploads functionality
 -in anonymous function invoke function uploadInputRef.current.click()
 -in component property-form.tsx import function MultiImageUploader from component multi-image-uploader.tsx
 -in jsx add component MultiImageUploader with prop onImagesChange
+
+36. Store selected images in the form state
+-in component multi-image-uploader.tsx create function handleInputChange()
+-add to function handleInputChange() parameter e with type React.ChangeEvent<HTMLInputElement>
+-in function handleInputChange() create variable const files
+-in jsx add to input element event onChange
+-in event onChange pass the function handleInputChange
+-in function handleInputChange() create variable const newImages
+-invoke function onImagesChange()
+-in component property-form.tsx import type ImageUpload from imageUpload.ts file
+-in propertySchema.ts file create and export variables const propertyImagesSchema nad const propertySchema
+-in component property-form.tsx import variable propertySchema from propertySchema.ts file
+-remove all variables propertyDataSchema and replace them with propertySchema
+-in variable const combinedDefaultValues add default value for images
+-in prop onImagesChange, invoke function form.setValue()
+-add component FormField with props control, name and render for images
+-in prop render, in component FormControl add component MultiImageUploader
+-open route: http://localhost:3000/admin-dashboard/new-property and click button Upload images

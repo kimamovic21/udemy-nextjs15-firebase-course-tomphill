@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { propertyDataSchema } from '@/validation/propertySchema';
+import { propertySchema } from '@/validation/propertySchema';
 import {
   Form,
   FormControl,
@@ -22,12 +22,13 @@ import {
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
+import { type ImageUpload } from '@/types/imageUpload';
 import MultiImageUploader from './multi-image-uploader';
 
 type PropertyFormProps = {
-  handleSubmit: (data: z.infer<typeof propertyDataSchema>) => void;
+  handleSubmit: (data: z.infer<typeof propertySchema>) => void;
   submitButtonLabel: React.ReactNode;
-  defaultValues?: z.infer<typeof propertyDataSchema>
+  defaultValues?: z.infer<typeof propertySchema>
 };
 
 const PropertyForm = ({
@@ -35,7 +36,7 @@ const PropertyForm = ({
   submitButtonLabel,
   defaultValues
 }: PropertyFormProps) => {
-  const combinedDefaultValues: z.infer<typeof propertyDataSchema> = {
+  const combinedDefaultValues: z.infer<typeof propertySchema> = {
     ...{
       address1: '',
       address2: '',
@@ -46,12 +47,13 @@ const PropertyForm = ({
       bathrooms: 0,
       description: '',
       status: 'draft',
+      images: [],
     },
     ...defaultValues,
   };
 
-  const form = useForm<z.infer<typeof propertyDataSchema>>({
-    resolver: zodResolver(propertyDataSchema),
+  const form = useForm<z.infer<typeof propertySchema>>({
+    resolver: zodResolver(propertySchema),
     defaultValues: combinedDefaultValues,
   });
 
@@ -239,7 +241,23 @@ const PropertyForm = ({
           </fieldset>
         </div>
 
-        <MultiImageUploader onImagesChange={() => { }} />
+        <FormField
+          control={form.control}
+          name='images'
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <MultiImageUploader
+                  onImagesChange={(images: ImageUpload[]) => {
+                    form.setValue('images', images);
+                  }}
+                  images={field.value}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <Button
           type='submit'
