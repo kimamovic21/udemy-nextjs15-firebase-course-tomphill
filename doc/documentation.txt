@@ -573,3 +573,23 @@ Section 04: Build the image uploads functionality
 -add component FormField with props control, name and render for images
 -in prop render, in component FormControl add component MultiImageUploader
 -open route: http://localhost:3000/admin-dashboard/new-property and click button Upload images
+
+37. Render the images list
+-open link: https://github.com/hello-pangea/dnd
+-type command: npm i @hello-pangea/dnd
+-in component multi-image-uploader.tsx import components DragDropContext, Droppable and Draggable from package hello-pangea/dnd
+-in jsx, in parent div element add component DragDropContext with prop onDragEnd
+-in DragDropContext add component Droppable with props droppableId and direction
+-in component Droppable invoke anonymous function with parameter (provided)
+-in anonymous function create div element with with props provided and ref
+-in div element invoke function images.map()
+-in function map() add component Draggable with props key, draggableId and index
+-in component Draggable invoke anonymous function with parameter provided
+-in anonymous function create div element with props draggableProps, dragHandleProps, ref and className
+-in div element create div element with Tailwind CSS flex classes
+-import component Image from package next/image
+-create div element for component Image
+-import component Badge from component badge.tsx
+-create div element for displaying p element and component Badge 
+-import React icons XIcon and from package lucide-react
+-create div element with Tailwind CSS flex classes for displaying React icons

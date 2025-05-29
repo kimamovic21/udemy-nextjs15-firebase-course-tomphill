@@ -59,7 +59,8 @@ const EditPropertyForm = ({
           bedrooms,
           description,
           price,
-          status
+          status,
+          images: [],
         }}
       />
     </div>
