@@ -593,3 +593,20 @@ Section 04: Build the image uploads functionality
 -create div element for displaying p element and component Badge 
 -import React icons XIcon and from package lucide-react
 -create div element with Tailwind CSS flex classes for displaying React icons
+
+38. Implement reorder and delete images
+-in component multi-image-uploader.tsx import type DropResult from package hello-pangea/dnd
+-create function handleDragEndImage() with parameter result
+-add to parameter result type DropResult
+-in jsx, in prop onDragEnd pass the function handleDragEndImage
+-in function handleDragEndImage() add condition if (!result.destination)
+-create variable const items
+-destructure variable const [reorderedItems]
+-invoke function items.splice()
+-invoke function onImagesChange(items)
+-create function handleDeleteImage()
+-add to function handleDeleteImage() parameter id with type string
+-in function handleDeleteImage() create variable const updatedImages
+-invoke function onImagesChange(updatedImages)
+-in jsx add to button element event onClick
+-in event onClick pass the function handleDeleteImage(image.id)
