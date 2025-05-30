@@ -45,6 +45,7 @@ const EditPropertyPage = async ({
             price={property.price}
             description={property.description}
             status={property.status}
+            images={property.images || []}
           />
         </CardContent>
       </Card>

@@ -644,3 +644,19 @@ Section 04: Build the image uploads functionality
 -add condition if (!!response.error || !response.propertyId)
 -open route: http://localhost:3000/admin-dashboard/new-property add information about property with images and click button Create Property
 -open Firebase storage to see uploaded images
+
+40. Load existing uploaded images into the edit property form
+-open link: https://stackoverflow.com/questions/68574254/body-exceeded-1mb-limit-error-in-next-js-api-route
+-in next.config.ts file add object experimental
+-in property.ts file, in type Property add type for images
+-in component edit-property-form.tsx, add to function EditPropertyForm parameter images
+-in jsx, add to component PropertyForm prop images
+-in component [propertyId]/page.tsx, in jsx add to component EditPropertyForm prop images
+-open route: http://localhost:3000/admin-dashboard/edit-property/[[propertyId]]
+-in component multi-image-uploader.tsx, add to type MultiImageUploaderProps type for urlFormatter
+-add to function MultiImageUploader() parameter urlFormatter
+-in jsx, in component Image, in prop src add ternary condition for variable urlFormatter
+-in component property-form.tsx, in jsx, add to component MultiImageUploader prop urlFormatter
+-in prop urlFormatter pass anonymous function with parameter image
+-in anonymous function add condition if (!image.url)
+-in next.config.ts file, in array remotePatterns add object for Firebase storage images

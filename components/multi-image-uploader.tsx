@@ -16,11 +16,13 @@ import Image from 'next/image';
 type MultiImageUploaderProps = {
   images?: ImageUpload[],
   onImagesChange: (images: ImageUpload[]) => void;
+  urlFormatter?: (image: ImageUpload) => string;
 };
 
 const MultiImageUploader = ({
   images = [],
-  onImagesChange
+  onImagesChange,
+  urlFormatter
 }: MultiImageUploaderProps) => {
   const uploadImageRef = useRef<HTMLInputElement | null>(null);
 
@@ -98,7 +100,7 @@ const MultiImageUploader = ({
                       <div className='bg-gray-100 rounded-lg flex items-center gap-2 overflow-hidden'>
                         <div className='size-16 relative'>
                           <Image
-                            src={image.url}
+                            src={urlFormatter ? urlFormatter(image) : image.url}
                             alt='Rental Image'
                             fill
                             className='object-cover'
