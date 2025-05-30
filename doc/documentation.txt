@@ -684,3 +684,25 @@ Section 04: Build the image uploads functionality
 -invoke function await savePropertyImages()
 -open route: http://localhost:3000/admin-dashboard/edit-property/[[propertyId]] and update property with new images
 -open Firebase storage to see uploaded images
+
+
+Section 05: Build the property preview pages
+
+42. Create the property page and render the description as markdown
+-in folder admin-dashboard create folders property and [propertyId]
+-in folder [propertyId] create component page.tsx
+-in component [propertyId]/page.tsx create and export function PropertyPage() as default
+-add to function PropertyPage() keyword async
+-add to function PropertyPage() parameter params with type any
+-create variable const paramsValue
+-import function getPropertyById from properties.ts file
+-create variable const property
+-in jsx add to parent div element with Tailwind CSS grid classes
+-open link: https://www.npmjs.com/package/react-markdown
+-type command: npm i react-markdown
+-import component ReactMarkdown from package react-markdown
+-import React icon ArrowLeftIcon from package lucide-react
+-import component Button from component button.tsx
+-import component Link from package next/link
+-add css styling in globals.css file
+-open route: http://localhost:3000/property/bHq2nUcpwxTGM1JeMdyM
