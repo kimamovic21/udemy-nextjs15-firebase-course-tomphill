@@ -11,8 +11,9 @@ import {
 } from 'firebase/storage';
 import { propertySchema } from '@/validation/propertySchema';
 import { useAuth } from '@/context/auth';
-import { createProperty, savePropertyImages } from './actions';
 import { storage } from '@/firebase/client';
+import { createProperty } from './actions';
+import { savePropertyImages } from '../actions';
 import PropertyForm from '@/components/property-form';
 
 const NewPropertyForm = () => {

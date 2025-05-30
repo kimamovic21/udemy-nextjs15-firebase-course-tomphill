@@ -660,3 +660,27 @@ Section 04: Build the image uploads functionality
 -in prop urlFormatter pass anonymous function with parameter image
 -in anonymous function add condition if (!image.url)
 -in next.config.ts file, in array remotePatterns add object for Firebase storage images
+
+41. Implement upload + delete images when updating a property
+-in component edit-property-form.tsx import variable propertySchema from propertySchema.ts file
+-destructure variables const { images: newImages, ...rest } from parameter data
+-create variable const response
+-import functions ref, deleteObject, uploadBytesResumable and type UploadTask from package firebase/storage
+-create variable const storageTasks with types (UploadTask | Promise<void>)[]
+-create variable const imagesToDelete
+-invoke function imagesToDelete.forEach()
+-create variable const paths with type string[]
+-invoke function newImages.forEach()
+-in function forEach() add condition if (image.file) - else
+-in condition if (image.file) create variable const path
+-invoke function paths.push(path)
+-create variable const storageRef
+-invoke function storageTasks.push()
+-in condition else invoke function paths.push(image.url)
+-invoke function await Promise.all(storageTasks)
+-in folder admin-dashboard create actions.ts file
+-move function savePropertyImages to actions.ts file
+-in component edit-property-form.tsx import function savePropertyImages from actions.ts file
+-invoke function await savePropertyImages()
+-open route: http://localhost:3000/admin-dashboard/edit-property/[[propertyId]] and update property with new images
+-open Firebase storage to see uploaded images
