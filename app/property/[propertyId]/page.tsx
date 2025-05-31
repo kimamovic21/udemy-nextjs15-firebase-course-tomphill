@@ -1,10 +1,19 @@
 import { ArrowLeftIcon, BedIcon, BathIcon } from 'lucide-react';
 import { getPropertyById } from '@/data/properties';
 import { Button } from '@/components/ui/button';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from '@/components/ui/carousel';
 import numeral from 'numeral';
 import ReactMarkdown from 'react-markdown'
 import Link from 'next/link';
+import Image from 'next/image';
 import PropertyStatusBadge from '@/components/property-status-badge';
+import BackButton from './back-button';
 
 const PropertyPage = async ({
   params
@@ -25,14 +34,39 @@ const PropertyPage = async ({
   return (
     <div className='grid grid-cols-[1fr_500px]'>
       <div>
-        carosuel
+        {!!property.images && (
+          <Carousel className='w-full'>
+            <CarouselContent>
+              {property?.images?.map((image, index) => {
+                const imageSrc = `https://firebasestorage.googleapis.com/v0/b/udemy-fire-homes-project.firebasestorage.app/o/${encodeURIComponent(image)}?alt=media`;
+
+                const imageAlt = `Image ${index + 1}`;
+
+                return (
+                  <CarouselItem key={image}>
+                    <div className='relative h-[80vh] min-h-80'>
+                      <Image
+                        src={imageSrc}
+                        alt={imageAlt}
+                        fill
+                      />
+                    </div>
+                  </CarouselItem>
+                )
+              })}
+            </CarouselContent>
+
+            {property?.images?.length > 1 && (
+              <>
+                <CarouselPrevious className='translate-x-24 size-12' />
+                <CarouselNext className='-translate-x-24' />
+              </>
+            )}
+          </Carousel>
+        )}
+
         <div className='property-description max-w-screen-md mx-auto py-10 px-4'>
-          <Button asChild>
-            <Link href='/' className='flex items-center gap-2'>
-              <ArrowLeftIcon />
-              <span>Back to properties</span>
-            </Link>
-          </Button>
+          <BackButton />
           <ReactMarkdown>
             {property.description}
           </ReactMarkdown>

@@ -708,8 +708,8 @@ Section 05: Build the property preview pages
 -open route: http://localhost:3000/property/[propertyId]
 
 43. Render the property details
--in component [propertyId]/page.tsx import component PropertyStatusBadge from component 
-import PropertyStatusBadge from '@/components/.tsx
+-in component [propertyId]/page.tsx import component PropertyStatusBadge from component property-status-badge.tsx
+-create variable const addressLines
 -in jsx add to div element for component PropertyStatusBadge Tailwind CSS grid classes
 -in div element with grid classes create div element with flex classes
 -in div element with flex classes invoke function addressLines?.map()
@@ -721,4 +721,19 @@ import PropertyStatusBadge from '@/components/.tsx
 -in jsx create h3 element with Tailwind CSS classes for property price
 -import React icons BedIcon and BathIcon from package lucide-react
 -create div elements with Tailwind CSS classes for properties bedrooms and bathrooms
+-open route: http://localhost:3000/property/[propertyId]
+
+44. Render the property images carousel and back button
+-open link: https://ui.shadcn.com/docs/components/carousel
+-type command: npx shadcn@latest add carousel
+-in component [propertyId]/page.tsx import carousel components from component carousel.tsx
+-in jsx add condition !!property.images && and carousel components
+-import component Image from package next/image
+-in condition !!property.images &&  add component Carousel
+-in component Carousel add component CarouselContent
+-in component CarouselContent invoke function property?.images?.map()
+-add condition property?.images?.length > 1 && 
+-create component back-button.tsx
+-in component back-button.tsx create and export function BackButton() as default
+-in component [propertyId]/page.tsx import component BackButton from component back-button.tsx
 -open route: http://localhost:3000/property/[propertyId]
