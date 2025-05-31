@@ -737,3 +737,27 @@ Section 05: Build the property preview pages
 -in component back-button.tsx create and export function BackButton() as default
 -in component [propertyId]/page.tsx import component BackButton from component back-button.tsx
 -open route: http://localhost:3000/property/[propertyId]
+
+
+Section 06: Build the property search page and functionality
+
+45. Create the property search page and search filters
+-create folder property-search and component page.tsx
+-in component page.tsx create and export function PropertySearchPage() as default
+-import card components from component card.tsx
+-in jsx, add to parent div element Tailwind CSS classes
+-in parent div element create elements h2 with Tailwind CSS classes
+-add component Card
+-create component filters-form.tsx
+-in component filters-form.tsx create and export function FiltersForm() as default
+-in component page.tsx import component FiltersForm from component filters-form.tsx
+-in jsx, in component CardContent add component FiltersForm
+-in component filters-form.tsx create variable const formSchema
+-import form components form component form.tsx
+-import component Button from component button.tsx
+-create function handleSubmit()
+-in jsx, add component Form as parent component
+-in component Form create form element
+-in form element add three component FormFiled for filters minPrice, maxPrice and minBedrooms
+-in form element add component Button with prop type
+-open route: http://localhost:3000/property-search
