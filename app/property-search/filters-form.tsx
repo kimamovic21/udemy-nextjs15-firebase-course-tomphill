@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter, useSearchParams } from 'next/navigation';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,17 +20,35 @@ const formSchema = z.object({
 });
 
 const FiltersForm = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      maxPrice: '',
-      minPrice: '',
-      minBedrooms: '',
+      maxPrice: searchParams.get('maxPrice') ?? '',
+      minPrice: searchParams.get('minPrice') ?? '',
+      minBedrooms: searchParams.get('minBedrooms') ?? '',
     },
   });
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
-    console.log({ data });
+    const newSearchParams = new URLSearchParams();
+
+    if (data.minPrice) {
+      newSearchParams.set('minPrice', data.minPrice);
+    };
+
+    if (data.maxPrice) {
+      newSearchParams.set('maxPrice', data.maxPrice);
+    };
+
+    if (data.minBedrooms) {
+      newSearchParams.set('minBedrooms', data.minBedrooms);
+    };
+
+    newSearchParams.set('page', '1');
+    router.push(`/property-search?${newSearchParams.toString()}`);
   };
 
   return (

@@ -22,7 +22,7 @@ const PropertiesTable = async ({
   const { data, totalPages } = await getProperties({
     pagination: {
       page,
-      pageSize: 2,
+      pageSize: 3,
     },
   });
 

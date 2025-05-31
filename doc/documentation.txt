@@ -761,3 +761,28 @@ Section 06: Build the property search page and functionality
 -in form element add three component FormFiled for filters minPrice, maxPrice and minBedrooms
 -in form element add component Button with prop type
 -open route: http://localhost:3000/property-search
+
+46. Hook up the search filters to the URL and create firestore indexes
+-open link: https://nextjs.org/docs/app/api-reference/functions/use-search-params
+-open link: https://react.dev/reference/react/Suspense
+-in component filters-form.tsx, in function handleSubmit() create variable const newSearchParams
+-add three if conditions
+-import functions useRouter and useSearchParams from package next/navigation
+-create variable const router
+-in function handleSubmit() invoke function router.push() 
+-create variable const searchParams
+-in component property-search/page.tsx import component Suspense from package react
+-in component CardContent add component Suspense
+-in component Suspense add component FiltersForm
+-in component filters-form, update object defaultValues
+-open route: http://localhost:3000/property-search?minPrice=10000&maxPrice=1000000&minBedrooms=1&page=1
+-in component property-search/page.tsx, add to function PropertySearch() parameter searchParams with type Promise<any>
+-add to function PropertySearch() keyword async
+-create variable const searchParamsValues
+-create four variables const parsedPage, parsedMinPrice, parsedMaxPrice and parsedMinBedrooms
+-create four variables const page, const minPrice, const maxPrice and const minBedrooms
+-import function getProperties from properties.ts file
+-create variable const properties
+-open link: https://stackoverflow.com/questions/50207339/cloud-firestore-failed-precondition-the-query-requires-an-index
+-open Firebase project and create indexes
+-open route: http://localhost:3000/property-search and search with filters
