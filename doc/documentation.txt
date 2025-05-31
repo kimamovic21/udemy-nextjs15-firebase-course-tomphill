@@ -705,4 +705,20 @@ Section 05: Build the property preview pages
 -import component Button from component button.tsx
 -import component Link from package next/link
 -add css styling in globals.css file
--open route: http://localhost:3000/property/bHq2nUcpwxTGM1JeMdyM
+-open route: http://localhost:3000/property/[propertyId]
+
+43. Render the property details
+-in component [propertyId]/page.tsx import component PropertyStatusBadge from component 
+import PropertyStatusBadge from '@/components/.tsx
+-in jsx add to div element for component PropertyStatusBadge Tailwind CSS grid classes
+-in div element with grid classes create div element with flex classes
+-in div element with flex classes invoke function addressLines?.map()
+-add component PropertyStatusBadge with prop status
+-create h2 element with Tailwind CSS classes
+-add to component PropertyStatusBadge prop class
+-in component property-status-badge.tsx, add to function PropertyStatusBadge() parameter className with type string
+-in component [propertyId]/page.tsx import function numeral from package numeral
+-in jsx create h3 element with Tailwind CSS classes for property price
+-import React icons BedIcon and BathIcon from package lucide-react
+-create div elements with Tailwind CSS classes for properties bedrooms and bathrooms
+-open route: http://localhost:3000/property/[propertyId]

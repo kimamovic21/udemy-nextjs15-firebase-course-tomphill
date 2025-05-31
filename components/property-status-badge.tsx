@@ -18,14 +18,19 @@ const variant: {
 };
 
 const PropertyStatusBadge = ({
-  status
+  status,
+  className
 }: {
-  status: PropertyStatus
+  status: PropertyStatus;
+  className?: string;
 }) => {
   const label = statusLabel[status];
 
   return (
-    <Badge variant={variant[status]}>
+    <Badge
+      variant={variant[status]}
+      className={className}
+    >
       {label}
     </Badge >
   );
