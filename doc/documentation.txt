@@ -786,3 +786,31 @@ Section 06: Build the property search page and functionality
 -open link: https://stackoverflow.com/questions/50207339/cloud-firestore-failed-precondition-the-query-requires-an-index
 -open Firebase project and create indexes
 -open route: http://localhost:3000/property-search and search with filters
+
+47. Render the filtered property list
+-in component property-search/page.tsx, in parent div element create div element with Tailwind CSS grid classes
+-in div element invoke function data?.map()
+-destructure variables const { data, totalPages } from variable properties
+-in function map() add component Card
+-in component Card add component CardContent
+-import component Image from package next/image
+-in component CardContent add condition !!property?.images?.[0] && () and component Image
+-add to component Image props src, alt, className and fill
+-in folder lib create imageUrlFormatter.ts file
+-in imageUrlFormatter.ts file create and export function imageUrlFormatter() with parameter imagePath
+-add to parameter imagePath type string
+-in component property-search import function imageUrlFormatter from  imageUrlFormatter.ts file
+-in prop src add function imageUrlFormatter() with parameter property?.images?.[0]
+-import React icons HomeIcon, BedIcon and BathIcon from package lucide-react
+-add condition !property?.images?.[0] && 
+-in condition !property?.images?.[0] && create div element with Tailwind CSS flex classes
+-create variable const addressLines
+-create div element with Tailwind CSS flex classes for displaying variable addressLines
+-create div element for displaying bedrooms and bathrooms
+-import function numeral from package numeral
+-create p element for displaying property price
+-import component Button from component button.tsx
+-import component Link from package next/link
+-in jsx add component Button with prop asChild
+-in component Button add component Link with prop href
+-open route: http://localhost:3000/property-search

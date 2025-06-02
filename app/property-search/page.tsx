@@ -1,11 +1,17 @@
 import { Suspense } from 'react';
+import { BathIcon, BedIcon, HomeIcon } from 'lucide-react';
 import { getProperties } from '@/data/properties';
+import { imageUrlFormatter } from '@/lib/imageUrlFormatter';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import numeral from 'numeral';
+import Image from 'next/image';
+import Link from 'next/link';
 import FiltersForm from './filters-form';
 
 const PropertySearchPage = async ({
@@ -38,11 +44,14 @@ const PropertySearchPage = async ({
     }
   });
 
-  console.log(properties);
+  const { data, totalPages } = properties;
 
   return (
     <div className='max-w-screen-lg mx-auto'>
-      <h2 className='text-4xl font-bold p-5'>Property Search</h2>
+      <h2 className='text-4xl font-bold p-5'>
+        Property Search
+      </h2>
+
       <Card>
         <CardHeader>
           <CardTitle>
@@ -56,6 +65,67 @@ const PropertySearchPage = async ({
           </Suspense>
         </CardContent>
       </Card>
+
+      <div className='grid grid-cols-3 mt-5 gap-5'>
+        {data?.map((property) => {
+          const addressLines = [
+            property.address1,
+            property.address2,
+            property.city,
+            property.postcode
+          ].filter(addressLine => !!addressLine).join(', ');
+
+          return (
+            <Card key={property.id} className='overflow-hidden'>
+              <CardContent className='px-0 -mt-6'>
+                <div className='h-40 relative bg-sky-50 text-zinc-400 flex-col'>
+                  {!!property?.images?.[0] && (
+                    <Image
+                      src={imageUrlFormatter(property.images[0])}
+                      alt='Rental image'
+                      className='object-cover'
+                      fill
+                    />
+                  )}
+
+                  {!property?.images?.[0] && (
+                    <div className='flex flex-col items-center justify-center h-full gap-1'>
+                      <HomeIcon className='w-6 h-6' />
+                      <small>No Image</small>
+                    </div>
+                  )}
+                </div>
+
+                <div className='flex flex-col gap-5 p-5'>
+                  <p>{addressLines}</p>
+
+                  <div className='flex gap-5'>
+                    <div className='flex gap-2'>
+                      <BedIcon />
+                      <span>{property.bedrooms}</span>
+                    </div>
+
+                    <div className='flex'>
+                      <BathIcon />
+                      <span>{property.bathrooms}</span>
+                    </div>
+                  </div>
+
+                  <p className='text-2xl'>
+                    £{numeral(property.price).format('0,0')}
+                  </p>
+
+                  <Button asChild>
+                    <Link href={`/property/${property.id}`}>
+                      View Property
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )
+        })}
+      </div>
     </div>
   );
 };
