@@ -845,3 +845,18 @@ Section 07: Build the login and register with email + password functionality
 -import function zodResolver from package hookform/resolvers/zod
 -create variable const form
 -open route: http://localhost:3000/register
+
+50. Render the register form UI
+-in component register-form.tsx import form components from component form.tsx
+-create async function handleSubmit() with parameter data
+-add to parameter data type z.infer<typeof formSchema>
+-in jsx add component Form as parent component with prop {...form}
+-in component Form create form element with event onSubmit
+-in event onSubmit invoke function handleSubmit()
+-in form element add four components FormField
+-import component Input from component input.tsx
+-import component Button from component button.tsx
+-add to form element Tailwind CSS flex classes
+-create p element with Tailwind CSS class text-center
+-import component ContinueWithGoogleButton from component continue-with-google-button.tsx
+-open route: http://localhost:3000/register

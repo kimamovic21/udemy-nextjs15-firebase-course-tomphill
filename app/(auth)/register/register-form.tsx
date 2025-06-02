@@ -3,6 +3,17 @@
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import ContinueWithGoogleButton from '@/components/continue-with-google-button';
 
 const formSchema = z.object({
   name: z
@@ -40,8 +51,119 @@ const RegisterForm = () => {
     },
   });
 
+  const handleSubmit = async (data: z.infer<typeof formSchema>) => {
+
+  };
+
   return (
-    <div>RegisterForm</div>
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(handleSubmit)}
+        className='flex flex-col gap-4'
+      >
+        <FormField
+          control={form.control}
+          name='name'
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>
+                  Your username
+                </FormLabel>
+
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder='Your username'
+                  />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            );
+          }}
+        />
+
+        <FormField
+          control={form.control}
+          name='email'
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>
+                  Your username
+                </FormLabel>
+
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder='Your email'
+                  />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            );
+          }}
+        />
+
+        <FormField
+          control={form.control}
+          name='password'
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>
+                  Password
+                </FormLabel>
+
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder='Password'
+                    type='password'
+                  />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            );
+          }}
+        />
+
+        <FormField
+          control={form.control}
+          name='passwordConfirm'
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>
+                  Confirm password
+                </FormLabel>
+
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder='Confirm password'
+                    type='password'
+                  />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            );
+          }}
+        />
+
+        <Button type='submit'>
+          Register
+        </Button>
+
+        <p className='text-center'>or</p>
+      </form>
+
+      <ContinueWithGoogleButton />
+    </Form>
   );
 };
 
