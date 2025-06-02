@@ -814,3 +814,16 @@ Section 06: Build the property search page and functionality
 -in jsx add component Button with prop asChild
 -in component Button add component Link with prop href
 -open route: http://localhost:3000/property-search
+
+48. Add the pagination buttons for property search
+-in component property-search/page.tsx create div element with Tailwind CSS flex classes
+-in div element invoke function Array.from().map()
+-in function map() add component Button with props key, asChild, disabled and variant
+-in component Button add component Link
+-in function map() create variable
+-add conditions if for minPrice, maxPrice and minBedrooms
+-invoke function newSearchParams.set()
+-in component Link, in prop href add dynamic href with variable newSearchParams
+-in component filters-form.tsx import component FormLabel from component form.tsx
+-in components FormItem add components FormLabel
+-open route: http://localhost:3000/property-search and search with filters

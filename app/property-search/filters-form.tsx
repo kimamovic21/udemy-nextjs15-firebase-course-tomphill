@@ -10,7 +10,8 @@ import {
   Form,
   FormControl,
   FormField,
-  FormItem
+  FormItem,
+  FormLabel
 } from '@/components/ui/form';
 
 const formSchema = z.object({
@@ -62,13 +63,16 @@ const FiltersForm = () => {
           name='minPrice'
           render={({ field }) => (
             <FormItem>
+              <FormLabel>
+                Min Price
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
                   placeholder='Min price'
                   type='number'
                   min={0}
-                  max={100000000}
+                  max={1000000000}
                 />
               </FormControl>
             </FormItem>
@@ -80,13 +84,16 @@ const FiltersForm = () => {
           name='maxPrice'
           render={({ field }) => (
             <FormItem>
+              <FormLabel>
+                Max Price
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
                   placeholder='Max price'
                   type='number'
                   min={0}
-                  max={100000000}
+                  max={1000000000}
                 />
               </FormControl>
             </FormItem>
@@ -98,6 +105,9 @@ const FiltersForm = () => {
           name='minBedrooms'
           render={({ field }) => (
             <FormItem>
+              <FormLabel>
+                Min Bedrooms
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -111,7 +121,10 @@ const FiltersForm = () => {
           )}
         />
 
-        <Button type='submit'>
+        <Button
+          type='submit'
+          className='mt-auto'
+        >
           Search
         </Button>
       </form>
