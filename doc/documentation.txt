@@ -827,3 +827,21 @@ Section 06: Build the property search page and functionality
 -in component filters-form.tsx import component FormLabel from component form.tsx
 -in components FormItem add components FormLabel
 -open route: http://localhost:3000/property-search and search with filters
+
+
+Section 07: Build the login and register with email + password functionality
+
+49. Create the register form schema
+-in middleware.ts file, in array matcher add route register
+-in conditions if !token and if token add request.nextUrl.pathname.startsWith('/register')
+-in component register/page.tsx import card components from component card.tsx
+-create component register-form.tsx
+-in component register-form.tsx create and export function RegisterForm() as default
+-add direction 'use client'
+-in component register/page.tsx import component RegisterForm() from component register-form.tsx
+-in component register-form.tsx import object z from package zod
+-create variable const formSchema 
+-import function useForm from package react-hook-form
+-import function zodResolver from package hookform/resolvers/zod
+-create variable const form
+-open route: http://localhost:3000/register
