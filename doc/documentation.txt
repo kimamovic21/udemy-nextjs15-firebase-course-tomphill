@@ -860,3 +860,31 @@ Section 07: Build the login and register with email + password functionality
 -create p element with Tailwind CSS class text-center
 -import component ContinueWithGoogleButton from component continue-with-google-button.tsx
 -open route: http://localhost:3000/register
+
+51. Create the register user server action
+-in folder validation create registerUser.ts file
+-move variable formSchema from component register-form.tsx in registerUser.ts file
+-rename variable formSchema to registerUserSchema
+-in component register-form.tsx import variable registerUserSchema
+-create actions.ts file
+-in actions.ts file add directive 'use server'
+-create and export async function registerUser()
+-add to function registerUser() parameter data with types
+-import variable registerUserSchema from registerUser.ts file
+-create variable const validation
+-add condition if (!validation.success)
+-import object auth from firebase/server.ts file
+-add blocks of code try - catch
+-in block code try invoke function await auth.createUser()
+-in block code catch add object return
+-in component register-form.tsx import function registerUser from actions.ts file
+-in function handleSubmit() create variable const response
+-add condition if (!!response?.error)
+-import function toast from package sonner
+-in condition if (!!response?.error) invoke function toast.error() and add return
+-after condition if invoke function toast.success()
+-import function useRouter from package next/navigation
+-create variable const router
+-in function handleSubmit() invoke function router.push('/login')
+-open route: http://localhost:3000/register
+-register for example: Test, test@email.com, !Test12345
