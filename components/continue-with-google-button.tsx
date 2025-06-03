@@ -15,8 +15,8 @@ const ContinueWithGoogleButton = () => {
         auth?.loginWithGoogle();
         router.refresh();
       }}
-      variant='default'
-      className='w-full'
+      variant='outline'
+      className='w-full cursor-pointer'
     >
       Continue with Google
     </Button>

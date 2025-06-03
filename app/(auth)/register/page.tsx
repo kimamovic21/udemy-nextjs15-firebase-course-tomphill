@@ -2,8 +2,10 @@ import {
   Card,
   CardContent,
   CardHeader,
-  CardTitle
+  CardTitle,
+  CardFooter,
 } from '@/components/ui/card';
+import Link from 'next/link';
 import RegisterForm from './register-form';
 
 const RegisterPage = () => {
@@ -18,6 +20,16 @@ const RegisterPage = () => {
       <CardContent>
         <RegisterForm />
       </CardContent>
+
+      <CardFooter>
+        <span>Already have an account ?</span>
+        <Link
+          href='/login'
+          className='pl-2 underline'
+        >
+          Log in here
+        </Link>
+      </CardFooter>
     </Card>
   );
 };

@@ -2,9 +2,11 @@ import {
   Card,
   CardContent,
   CardHeader,
-  CardTitle
+  CardTitle,
+  CardFooter
 } from '@/components/ui/card';
-import ContinueWithGoogleButton from '@/components/continue-with-google-button';
+import Link from 'next/link';
+import LoginForm from './login-form';
 
 const LoginPage = () => {
   return (
@@ -16,8 +18,18 @@ const LoginPage = () => {
       </CardHeader>
 
       <CardContent>
-        <ContinueWithGoogleButton />
+        <LoginForm />
       </CardContent>
+
+      <CardFooter>
+        <span>Don&apos;t have an account ?</span>
+        <Link
+          href='/register'
+          className='underline pl-2'
+        >
+          Register here
+        </Link>
+      </CardFooter>
     </Card>
   );
 };

@@ -888,3 +888,50 @@ Section 07: Build the login and register with email + password functionality
 -in function handleSubmit() invoke function router.push('/login')
 -open route: http://localhost:3000/register
 -register for example: Test, test@email.com, !Test12345
+
+52. Build the login with email and password form
+-in folder login create component login-form.tsx
+-in component login-form.tsx add directive 'use client'
+-create and export function LoginForm() as default
+-in component login/page.tsx import component LoginForm from component login-form.tsx
+-in folder validation create loginUser.ts file
+-in loginUser.ts file create and export variable loginUserSchema 
+-in component login-form.tsx import variable loginUserSchema
+-in component login-form.tsx import function useForm from package react-hook-form
+-import object z from package zod
+-import function zodResolver from package hookform/resolvers/zod
+-create variable const form
+-import form component from component form.tsx
+-in jsx add component Form as parent component
+-add to component Form prop {...form}
+-in component Form create form element with event onSubmit
+-create async function handleSubmit() with parameter data
+-add to parameter data type z.infer<typeof loginUserSchema>
+-in event onSubmit invoke function handleSubmit()
+-add to form element prop className
+-in form element add two components FormField for email and password
+-add to components FormField props control, name and render
+-import component Input from component input.tsx
+-import component Button from component button.tsx
+-in form element add component Button with prop type
+-in component login-form.tsx import component ContinueWithGoogleButton
+-import component Link from package next/link
+-create div element for component Link
+-in component login/page.tsx import component Link from package next/link
+-import component CardFooter from component card.tsx
+-in jsx add component CardFooter with span element and component Link
+-in component register/page.tsx import components CardFooter and Link
+-in component auth.tsx import function signInWithEmailAndPassword from package firebase/auth
+-in type AuthContextType add type for function loginWithEmail
+-create async function loginWithEmail() with two parameters email and password
+-add to parameters types
+-in function loginWithEmail invoke function await signInWithEmailAndPassword() with three arguments
+-in prop value add function loginWithEmail
+-in component login-form.tsx import function useAuth from component auth.tsx
+-create variable const auth
+-in function handleSubmit() invoke function auth.loginWithEmail() with two arguments email and password
+-import function useRouter from package next/navigation
+-create variable const router
+-in function handleSubmit() invoke function router.push('/')
+-open route: http://localhost:3000/register
+-open route: http://localhost:3000/login
