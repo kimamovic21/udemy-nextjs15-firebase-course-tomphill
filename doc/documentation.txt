@@ -935,3 +935,28 @@ Section 07: Build the login and register with email + password functionality
 -in function handleSubmit() invoke function router.push('/')
 -open route: http://localhost:3000/register
 -open route: http://localhost:3000/login
+
+53. Improve validation and errors for login and register
+-open link: https://stackoverflow.com/questions/57010980/firebase-authentication-error-auth-invalid-credential
+-open link: https://stackoverflow.com/questions/62116406/firebase-popup-signin-popup-closed-by-user-error
+-open link: https://stackoverflow.com/questions/39898356/firebase-signinwithpopup-gives-auth-popup-blocked-when-used-via-built-in-browser
+-open Firebase project and open authentication settings
+-in authentication settings choose option require enforcement
+-in component continue-with-google-button.tsx, in event onClick add try - catch blocks
+-open link: https://stackoverflow.com/questions/39781618/error-ts2314-generic-type-promiset-requires-1-type-arguments
+-in component auth.tsx, in type AuthContextType change type for function loginWithGoogle from void to Promise<void>
+-in component login-form.tsx, in function handleSubmit() add try - catch blocks
+-import function toast from package sonner
+-open link: https://stackoverflow.com/questions/60151181/object-is-of-type-unknown-typescript-generics
+-in block code catch invoke function toast.error() with error message
+-open link: https://stackoverflow.com/questions/69021040/why-catch-clause-variable-type-annotation-must-be-any
+-in block code try invoke function toast.success() with success message
+-in register/actions.ts file, in function registerUser() improve error message in catch block
+-in component register-form.tsx, in form element create fieldset element
+-move all components FormField, Button and p element inside fieldset element
+-add to fieldset element props className and disabled
+-in component login-form.tsx, in form element create fieldset element
+-move all components FormField, idv and p element inside fieldset element
+-add to fieldset element props className and disabled
+-open route: http://localhost:3000/register
+-open route: http://localhost:3000/login

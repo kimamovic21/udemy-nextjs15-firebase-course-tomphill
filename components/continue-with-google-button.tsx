@@ -12,8 +12,12 @@ const ContinueWithGoogleButton = () => {
   return (
     <Button
       onClick={async () => {
-        auth?.loginWithGoogle();
-        router.refresh();
+        try {
+          auth?.loginWithGoogle();
+          router.push('/');
+        } catch (e) {
+          console.error(e);
+        };
       }}
       variant='outline'
       className='w-full cursor-pointer'

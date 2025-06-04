@@ -23,7 +23,7 @@ const AuthButtons = () => {
     <div>
       {!!auth?.currentUser && (
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          <DropdownMenuTrigger className='cursor-pointer'>
             <Avatar>
               {!!auth?.currentUser.photoURL && (
                 <Image
@@ -33,7 +33,7 @@ const AuthButtons = () => {
                   height={70}
                 />
               )}
-              <AvatarFallback>
+              <AvatarFallback className='text-sky-950'>
                 {(auth?.currentUser?.displayName || auth?.currentUser?.email)?.[0]}
               </AvatarFallback>
             </Avatar>
@@ -51,12 +51,12 @@ const AuthButtons = () => {
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem asChild className='cursor-pointer'>
               <Link href='/account'>My account</Link>
             </DropdownMenuItem>
 
             {!!auth?.customClaims?.admin && (
-              <DropdownMenuItem asChild>
+              <DropdownMenuItem asChild className='cursor-pointer'>
                 <Link href='/admin-dashboard'>
                   Admin Dashboard
                 </Link>
@@ -64,7 +64,7 @@ const AuthButtons = () => {
             )}
 
             {!auth?.customClaims?.admin && (
-              <DropdownMenuItem asChild>
+              <DropdownMenuItem asChild className='cursor-pointer'>
                 <Link href='/account/my-favorites'>
                   My favorites
                 </Link>
@@ -76,6 +76,7 @@ const AuthButtons = () => {
                 await auth.logout();
                 router.refresh();
               }}
+              className='cursor-pointer'
             >
               Logout
             </DropdownMenuItem>

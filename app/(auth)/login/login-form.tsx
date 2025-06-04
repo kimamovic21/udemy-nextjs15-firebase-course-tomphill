@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'sonner';
 import { useAuth } from '@/context/auth';
 import { loginUserSchema } from '@/validation/loginUser';
 import { Input } from '@/components/ui/input';
@@ -33,80 +34,96 @@ const LoginForm = () => {
   });
 
   const handleSubmit = async (data: z.infer<typeof loginUserSchema>) => {
-    auth?.loginWithEmail(data.email, data.password);
+    try {
+      await auth?.loginWithEmail(data.email, data.password);
 
-    router.push('/');
+      toast.success('Success', {
+        description: 'Successfully logged in',
+      });
+
+      router.refresh();
+    } catch (e: any) {
+      console.error(e);
+      toast.error('Error', {
+        description: e.code === 'auth/invalid-credentials'
+          ? 'Invalid email or password'
+          : 'An error occurred',
+      });
+    };
   };
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleSubmit)}
-        className='flex flex-col gap-4'
+      <form onSubmit={form.handleSubmit(handleSubmit)}
       >
-        <FormField
-          control={form.control}
-          name='email'
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>
-                  Email
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder='Email'
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        />
-
-        <FormField
-          control={form.control}
-          name='password'
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>
-                  Password
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder='Password'
-                    type='password'
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        />
-
-        <Button
-          type='submit'
-          className='cursor-pointer'
+        <fieldset
+          className='flex flex-col gap-4'
+          disabled={form.formState.isSubmitting}
         >
-          Login
-        </Button>
+          <FormField
+            control={form.control}
+            name='email'
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>
+                    Email
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder='Email'
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
 
-        <div>
-          <span>Forgotten your password?</span>
-          <Link
-            href='/forgot-password'
-            className='pl-2 underline'
+          <FormField
+            control={form.control}
+            name='password'
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>
+                    Password
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder='Password'
+                      type='password'
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+
+          <Button
+            type='submit'
+            className='cursor-pointer'
           >
-            Reset it here
-          </Link>
-        </div>
+            Login
+          </Button>
 
-        <p className='text-center pb-5'>
-          or
-        </p>
+          <div>
+            <span>Forgotten your password?</span>
+            <Link
+              href='/forgot-password'
+              className='pl-2 underline'
+            >
+              Reset it here
+            </Link>
+          </div>
+
+          <p className='text-center pb-5'>
+            or
+          </p>
+        </fieldset>
       </form>
 
       <ContinueWithGoogleButton />

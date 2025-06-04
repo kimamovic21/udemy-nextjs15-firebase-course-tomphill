@@ -51,109 +51,111 @@ const RegisterForm = () => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleSubmit)}
-        className='flex flex-col gap-4'
-      >
-        <FormField
-          control={form.control}
-          name='name'
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>
-                  Your username
-                </FormLabel>
+      <form onSubmit={form.handleSubmit(handleSubmit)}>
+        <fieldset
+          className='flex flex-col gap-4'
+          disabled={form.formState.isSubmitting}
+        >
+          <FormField
+            control={form.control}
+            name='name'
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>
+                    Your username
+                  </FormLabel>
 
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder='Your username'
-                  />
-                </FormControl>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder='Your username'
+                    />
+                  </FormControl>
 
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        />
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
 
-        <FormField
-          control={form.control}
-          name='email'
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>
-                  Your username
-                </FormLabel>
+          <FormField
+            control={form.control}
+            name='email'
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>
+                    Your username
+                  </FormLabel>
 
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder='Your email'
-                  />
-                </FormControl>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder='Your email'
+                    />
+                  </FormControl>
 
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        />
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
 
-        <FormField
-          control={form.control}
-          name='password'
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>
-                  Password
-                </FormLabel>
+          <FormField
+            control={form.control}
+            name='password'
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>
+                    Password
+                  </FormLabel>
 
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder='Password'
-                    type='password'
-                  />
-                </FormControl>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder='Password'
+                      type='password'
+                    />
+                  </FormControl>
 
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        />
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
 
-        <FormField
-          control={form.control}
-          name='passwordConfirm'
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>
-                  Confirm password
-                </FormLabel>
+          <FormField
+            control={form.control}
+            name='passwordConfirm'
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>
+                    Confirm password
+                  </FormLabel>
 
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder='Confirm password'
-                    type='password'
-                  />
-                </FormControl>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder='Confirm password'
+                      type='password'
+                    />
+                  </FormControl>
 
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        />
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
 
-        <Button type='submit'>
-          Register
-        </Button>
+          <Button type='submit'>
+            Register
+          </Button>
 
-        <p className='text-center'>or</p>
+          <p className='text-center'>or</p>
+        </fieldset>
       </form>
 
       <ContinueWithGoogleButton />

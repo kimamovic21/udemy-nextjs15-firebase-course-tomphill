@@ -24,10 +24,11 @@ export async function registerUser(data: {
       email: data.email,
       password: data.password,
     });
-  } catch (e) {
+  } catch (e: any) {
+    console.error(e);
     return {
       error: true,
-      message: 'Could not register user',
+      message: e.message ?? 'Could not register user',
     };
   };
 };
