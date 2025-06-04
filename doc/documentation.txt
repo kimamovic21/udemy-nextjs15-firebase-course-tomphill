@@ -960,3 +960,11 @@ Section 07: Build the login and register with email + password functionality
 -add to fieldset element props className and disabled
 -open route: http://localhost:3000/register
 -open route: http://localhost:3000/login
+
+54. Update the middleware to cater for expiring auth tokens
+-in middleware.ts file add condition if decodedToken expires in 5 min
+-in folder app create folders api and refresh-token
+-in folder refresh-token create route.ts file
+-in route.ts file import function NextResponse and type NextRequest from package next/server
+-import function cookies from package next/headers
+-create and export async function GET()
