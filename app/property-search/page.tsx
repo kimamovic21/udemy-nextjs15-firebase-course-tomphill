@@ -13,6 +13,7 @@ import numeral from 'numeral';
 import Image from 'next/image';
 import Link from 'next/link';
 import FiltersForm from './filters-form';
+import ToggleFavoriteButton from './toggle-favorite-button';
 
 const PropertySearchPage = async ({
   searchParams
@@ -79,6 +80,8 @@ const PropertySearchPage = async ({
             <Card key={property.id} className='overflow-hidden'>
               <CardContent className='px-0 -mt-6'>
                 <div className='h-40 relative bg-sky-50 text-zinc-400 flex-col'>
+                  <ToggleFavoriteButton />
+
                   {!!property?.images?.[0] && (
                     <Image
                       src={imageUrlFormatter(property.images[0])}

@@ -968,3 +968,20 @@ Section 07: Build the login and register with email + password functionality
 -in route.ts file import function NextResponse and type NextRequest from package next/server
 -import function cookies from package next/headers
 -create and export async function GET()
+
+
+Section 08: Build the favorites functionality
+
+55. Add the my-favorites page and toggle favorite button
+-in folder app create folder my-favorites and component page.tsx
+-in component my-favorites/page.tsx create and export function MyFavoritesPage() as default
+-open route: http://localhost:3000/account/my-favorites
+-in middleware.ts file add condition if (!decodedToken.admin && request.nextUrl.pathname.startsWith('/admin-dashboard')) 
+-add condition if (decodedToken.admin && request.nextUrl.pathname.startsWith('/account/my-favorites')) 
+-in array matcher add routes '/account' and '/account/:path*'
+-in folder property-search create component toggle-favorite-button.tsx
+-in component toggle-favorite-button.tsx create and export function ToggleFavoriteButton() as default
+-in component property-search/page.tsx import component ToggleFavoriteButton from component toggle-favorite-button.tsx
+-open route: http://localhost:3000/property-search
+-in component toggle-favorite-button.tsx import React icon HeartIcon from package lucide-react
+-in jsx create button component with Tailwind CSS classes
