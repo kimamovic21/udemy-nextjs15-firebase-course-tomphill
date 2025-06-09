@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { BathIcon, BedIcon, HomeIcon } from 'lucide-react';
 import { getProperties } from '@/data/properties';
 import { imageUrlFormatter } from '@/lib/imageUrlFormatter';
+import { getUserFavorites } from '@/data/favorites';
 import {
   Card,
   CardContent,
@@ -47,6 +48,8 @@ const PropertySearchPage = async ({
 
   const { data, totalPages } = properties;
 
+  const userFavorites = await getUserFavorites() || {};
+
   return (
     <div className='max-w-screen-lg mx-auto'>
       <h2 className='text-4xl font-bold p-5'>
@@ -80,7 +83,10 @@ const PropertySearchPage = async ({
             <Card key={property.id} className='overflow-hidden'>
               <CardContent className='px-0 -mt-6'>
                 <div className='h-40 relative bg-sky-50 text-zinc-400 flex-col'>
-                  <ToggleFavoriteButton />
+                  <ToggleFavoriteButton
+                    propertyId={property.id}
+                    isFavorite={userFavorites[property.id]}
+                  />
 
                   {!!property?.images?.[0] && (
                     <Image

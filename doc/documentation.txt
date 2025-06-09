@@ -985,3 +985,44 @@ Section 08: Build the favorites functionality
 -open route: http://localhost:3000/property-search
 -in component toggle-favorite-button.tsx import React icon HeartIcon from package lucide-react
 -in jsx create button component with Tailwind CSS classes
+
+56. Implement the add to favorites functionality
+-in folder property-search create actions.ts file
+-in actions.ts file add directive 'use server'
+-create and export async function addFavorite() with two parameters
+-add to parameters types
+-import functions auth and firebase from firebase/server.ts file
+-create variable const verifiedToken
+-add condition if (!verifiedToken)
+-invoke function await firestore.collection()
+-in component toggle-favorite-button.tsx import function addFavorite from actions.ts file
+-add directive 'use client'
+-add to function ToggleFavoriteButton() parameter propertyId
+-in jsx add to button event onClick
+-in event onClick invoke anonymous function
+-import function useAuth from component auth.tsx
+-create variable const auth
+-in anonymous function create variable const tokenResult
+-invoke function await addFavorite() with two arguments
+-in component property-search/page.tsx, in jsx add to component ToggleFavoriteButton prop propertyId
+-open route: http://localhost:3000/property-search and click HeartIcon
+-open Firebase project and Firestore Database
+-in folder data create favorites.ts file
+-in favorites.ts file import package 'server-only'
+-create and export async function getUserFavorites()
+-import function cookies from package next/headers
+-create variables const cookieStore and const token
+-add condition if(!token)
+-import functions auth and firestore from firebase/server.ts file
+-create variable const verifiedToken
+-add condition if (!verifiedToken)
+-create variables const favoritesSnapshot and const favoritesData
+-add return favoritesData || {}
+-in middleware.ts file in array matcher add route '/property-search'
+-in condition if (!token ) add request.nextUrl.pathname.startsWith('/property-search')
+-in component property-search/page.tsx import function getUserFavorites from data/favorites.ts file
+-create variable const userFavorites 
+-in jsx, add to component ToggleFavoriteButton prop isFavorite
+-in component toggle-favorite-button.tsx, add to function ToggleFavoriteButton() parameter isFavorite with type boolean
+-in jsx add to component HeartIcon prop fill and ternary condition for variable isFavorite
+-open route: http://localhost:3000/property-search and click HeartIcon

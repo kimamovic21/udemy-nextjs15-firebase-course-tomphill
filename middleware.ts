@@ -11,16 +11,17 @@ export async function middleware(request: NextRequest) {
   const token = cookieStore.get('firebaseAuthToken')?.value;
 
   if (
-    !token && (
-      request.nextUrl.pathname.startsWith('/login') ||
-      request.nextUrl.pathname.startsWith('/register'))
+    !token &&
+    (request.nextUrl.pathname.startsWith('/login') ||
+      request.nextUrl.pathname.startsWith('/register') ||
+      request.nextUrl.pathname.startsWith('/property-search'))
   ) {
     return NextResponse.next();
   };
 
   if (
-    token && (
-      request.nextUrl.pathname.startsWith('/login') ||
+    token &&
+    (request.nextUrl.pathname.startsWith('/login') ||
       request.nextUrl.pathname.startsWith('/register'))
   ) {
     return NextResponse.redirect(new URL('/', request.url));
@@ -65,6 +66,7 @@ export const config = {
     '/login',
     '/register',
     '/account',
-    '/account/:path*'
+    '/account/:path*',
+    '/property-search'
   ],
 };
