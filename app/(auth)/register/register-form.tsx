@@ -36,13 +36,13 @@ const RegisterForm = () => {
     const response = await registerUser(data);
 
     if (!!response?.error) {
-      toast('Error!', {
+      toast.error('Error!', {
         description: response?.message,
       });
       return;
     };
 
-    toast('Success!', {
+    toast.success('Success!', {
       description: 'Your account was created successfully',
     });
 

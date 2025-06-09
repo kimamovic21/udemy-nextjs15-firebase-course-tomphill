@@ -1026,3 +1026,31 @@ Section 08: Build the favorites functionality
 -in component toggle-favorite-button.tsx, add to function ToggleFavoriteButton() parameter isFavorite with type boolean
 -in jsx add to component HeartIcon prop fill and ternary condition for variable isFavorite
 -open route: http://localhost:3000/property-search and click HeartIcon
+
+57. Implement the remove from favorites functionality
+-in component toggle-favorite-button.tsx import function useRouter from package next/navigation
+-create variable const router
+-in anonymous function invoke function router.refresh()
+-add to React icon HeartIcon prop className
+-add to button element Tailwind CSS classes
+-in property-search/actions.ts file import object FieldValue from package firebase-admin/firestore
+-create and export async function removeFavorite()
+-in component toggle-favorite-button.tsx import function removeFavorite from actions.ts file
+-in anonymous function add conditions if (isFavorite) - else
+-in condition if (isFavorite) invoke function await removeFavorite()
+-in condition else invoke function await addFavorite()
+-open route: http://localhost:3000/property-search and click HeartIcon
+-import function toast from package sonner
+-in anonymous function add try - catch blocks
+-in block code try add conditions if - else
+-in conditions if - else invoke function toast.success
+-in block code catch invoke function toast.error
+-import function cookies from package next/headers
+-import function auth from firebase/server.ts file
+-create variables const cookieStore, const token and let verifiedToken
+-add condition if (token)
+-import type DecodedIdToken from package firebase-admin/auth
+-add to variable let verifiedToken types DecodedIdToken | null
+-in jsx add conditional rendering (!verifiedToken || !verifiedToken.admin) && 
+-in components auth-buttons.tsx and condition-with-google.tsx import function toast from package sonner
+-open route: http://localhost:3000/property-search

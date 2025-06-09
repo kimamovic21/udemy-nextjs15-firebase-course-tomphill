@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 import { useAuth } from '@/context/auth';
 import { Button } from './ui/button';
 
@@ -14,9 +15,15 @@ const ContinueWithGoogleButton = () => {
       onClick={async () => {
         try {
           auth?.loginWithGoogle();
+          toast.success('Success', {
+            description: 'Successfully logged in',
+          });
           router.push('/');
         } catch (e) {
           console.error(e);
+          toast.error('Error', {
+            description: 'Something went wrong'
+          });
         };
       }}
       variant='outline'

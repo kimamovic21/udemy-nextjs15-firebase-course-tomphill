@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 import { useAuth } from '@/context/auth';
 import {
   DropdownMenu,
@@ -73,8 +74,18 @@ const AuthButtons = () => {
 
             <DropdownMenuItem
               onClick={async () => {
-                await auth.logout();
-                router.refresh();
+                try {
+                  await auth.logout();
+                  router.refresh();
+                  toast.success('Success', {
+                    description: 'You have successfully logged out'
+                  });
+                } catch (e) {
+                  console.error(e);
+                  toast.error('Error', {
+                    description: 'Something went wrong'
+                  });
+                };
               }}
               className='cursor-pointer'
             >
