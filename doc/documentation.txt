@@ -1054,3 +1054,16 @@ Section 08: Build the favorites functionality
 -in jsx add conditional rendering (!verifiedToken || !verifiedToken.admin) && 
 -in components auth-buttons.tsx and condition-with-google.tsx import function toast from package sonner
 -open route: http://localhost:3000/property-search
+
+58. Implement parallel and intercepting routes for login modal
+-open link: https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes
+-open link: https://nextjs.org/docs/app/api-reference/file-conventions/intercepting-routes
+-in folder property-search create folder @modal and component default.tsx
+-in component default.tsx create and export function Default() as default
+-create component layout.tsx
+-in component layout.tsx create and export function Layout() as default
+-add to function Layout() parameters children and modal with types
+-in folder @modal create folder (..)login and component page.tsx
+-in component (..)login/page.tsx create and export function LoginModal() as default
+-in component toggle-favorite-button.tsx, in condition if (!tokenResult) invoke function router.push('/login')
+-open route: http://localhost:3000/property-search and click HeartIcon

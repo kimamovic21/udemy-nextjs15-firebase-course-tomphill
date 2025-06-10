@@ -21,7 +21,10 @@ const ToggleFavoriteButton = ({
       className='absolute top-0 right-0 z-10 p-2 bg-white rounded-bl-lg cursor-pointer'
       onClick={async () => {
         const tokenResult = await auth?.currentUser?.getIdTokenResult();
-        if (!tokenResult) return;
+        if (!tokenResult) {
+          router.push('/login');
+          return;
+        };
 
         try {
           if (isFavorite) {
