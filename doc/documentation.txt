@@ -1116,3 +1116,29 @@ Section 08: Build the favorites functionality
 -in component my-favorites/page.tsx import function getPropertiesById from properties.ts file
 -create variable const properties
 -open route: http://localhost:3000/account/my-favorites
+
+61. Render the list of favorites in the my-favorites page
+-in component my-favorites/page.tsx add to parent div element Tailwind CSS classes
+-create h2 element with Tailwind CSS classes
+-add conditional rendering !paginatedFavorites.length &&
+-in conditional rendering create h3 element with Tailwind CSS classes
+-import table components from component table.tsx
+-add condition rendering !!paginatedFavorites.length &&
+-in conditional rendering add table components
+-in component Table add components TableHeader and TableBody
+-in component TableHeader add component TableRow
+-in component TableRow add three components TableHead
+-in component TableBody invoke function paginatedFavorites?.map()
+-in function map() create variables const property and const address
+-in return statement add component TableRow with prop key
+-import component PropertyStatusBadge from component property-status-badge.tsx
+-in component TableRow add three components TableCell
+-in first component TableCell display variable address
+-in second component TableCell add conditional rendering !!property && 
+-in condition rendering !!property && add component PropertyStatusBadge with prop status
+-import component Button from component button.tsx
+-import React icons EyeIcon and Trash2Icon from package lucide-react
+-in third component Table Cell add components Button
+-import component Link from package next/link
+-add conditional rendering !!property &&
+-open route: http://localhost:3000/account/my-favorites
