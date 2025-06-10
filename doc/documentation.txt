@@ -1101,3 +1101,18 @@ Section 08: Build the favorites functionality
 -in component (..)login/page.tsx import function loginSuccess from actions.ts file
 -in anonymous function invoke function await loginSuccess()
 -open route: http://localhost:3000/property-search and click HeartIcon
+
+60. Query for the list of favorites
+-in component my-favorites/page.tsx import function getUserFavorites from favorites.ts file
+-add to function MyFavoritesPage() keyword async
+-create variables const pageSize, const favorites, const allFavorites and const totalPages
+-add to function MyFavoritesPage() parameter searchParams with type Promise<any>
+-create variables const searchParamsValue and const page
+-create variable const paginatedFavorites
+-in properties.ts file create and export async function getPropertiesById()
+-add to function getPropertiesById() parameter propertyIds with type string[]
+-create variables const propertiesSnapshot and const propertiesData
+-add return propertiesData
+-in component my-favorites/page.tsx import function getPropertiesById from properties.ts file
+-create variable const properties
+-open route: http://localhost:3000/account/my-favorites
