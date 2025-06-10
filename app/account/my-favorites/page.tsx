@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import { getUserFavorites } from '@/data/favorites';
 import { getPropertiesById } from '@/data/properties';
 import { Button } from '@/components/ui/button';
@@ -5,6 +6,7 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow
@@ -12,6 +14,7 @@ import {
 import PropertyStatusBadge from '@/components/property-status-badge';
 import { EyeIcon, Trash2Icon } from 'lucide-react';
 import Link from 'next/link';
+import RemoveFavoriteButton from './remove-favorite-button';
 
 const MyFavoritesPage = async ({
   searchParams
@@ -20,7 +23,7 @@ const MyFavoritesPage = async ({
 }) => {
   const searchParamsValues = await searchParams;
   const page = searchParamsValues?.page ? parseInt(searchParamsValues.page) : 1;
-  const pageSize = 2;
+  const pageSize = 3;
   const favorites = await getUserFavorites() || {};
   const allFavorites = Object.keys(favorites);
   const totalPages = Math.ceil(allFavorites.length / pageSize);
@@ -29,6 +32,10 @@ const MyFavoritesPage = async ({
     (page - 1) * pageSize,
     page * pageSize
   );
+
+  if (!paginatedFavorites.length && page > 1) {
+    redirect(`/account/my-favorite?page=${totalPages}`);
+  };
 
   const properties = await getPropertiesById(paginatedFavorites);
 
@@ -91,9 +98,7 @@ const MyFavoritesPage = async ({
                           </Link>
                         </Button>
 
-                        <Button variant='outline'>
-                          <Trash2Icon />
-                        </Button>
+                        <RemoveFavoriteButton propertyId={property.id} />
                       </>
                     )}
                   </TableCell>
@@ -101,6 +106,28 @@ const MyFavoritesPage = async ({
               )
             })}
           </TableBody>
+
+          <TableFooter>
+            <TableRow>
+              <TableCell colSpan={3} className='text-center'>
+                {Array.from({ length: totalPages })?.map((_, i) => {
+                  return (
+                    <Button
+                      key={i}
+                      asChild={page != i + 1}
+                      variant='outline'
+                      className='mx-1'
+                      disabled={page === i + 1}
+                    >
+                      <Link href={`/account/my-favorites?page=${i + 1}`}>
+                        {i + 1}
+                      </Link>
+                    </Button>
+                  )
+                })}
+              </TableCell>
+            </TableRow>
+          </TableFooter>
         </Table>
       )}
     </div>

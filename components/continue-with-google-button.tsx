@@ -14,13 +14,16 @@ const ContinueWithGoogleButton = () => {
     <Button
       onClick={async () => {
         try {
-          auth?.loginWithGoogle();
+          await auth?.loginWithGoogle();
+
           toast.success('Success', {
             description: 'Successfully logged in',
           });
-          router.push('/');
+
+          router.refresh();
         } catch (e) {
           console.error(e);
+
           toast.error('Error', {
             description: 'Something went wrong'
           });

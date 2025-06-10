@@ -1142,3 +1142,38 @@ Section 08: Build the favorites functionality
 -import component Link from package next/link
 -add conditional rendering !!property &&
 -open route: http://localhost:3000/account/my-favorites
+
+62. Implement the favorites table pagination and remove favorites
+-in component my-favorites/page.tsx, in component Table add component TableFooter
+-in component TableFooter add component TableRow
+-in component TableRow add component TableCell with props colSpan and className
+-in component TableCell invoke function Array.from()?.map()
+-in function map(), in return statement add component Button with five props
+-in folder my-favorites create component remove-favorite-button.tsx
+-in component remove-favorite-button.tsx add directive 'use client'
+-create and export function RemoveFavoriteButton() as default
+-add to function RemoveFavoriteButton() parameter property with type string
+-in jsx add component Button as parent component
+-add to component Button props variant and onClick
+-in component Button add React icon Trash2Icon
+-create actions.ts file and function removeFavorite
+-in component remove-favorite-button.tsx import function removeFavorite from actions.ts file
+-import function useAuth from component auth.tsx
+-create variable const auth 
+-in anonymous function create variable const tokenResult
+-add condition if (!tokenResult)
+-invoke function await removeFavorite() with two arguments
+-in component my-favorite/page.tsx import component RemoveFavoriteButton from component remove-favorite-button.tsx
+-in conditional rendering add component RemoveFavoriteButton with prop propertyId
+-import function toast from package sonner
+-in anonymous function invoke function toast.sonner()
+-import function useRouter form package next/navigation
+-create variable const router
+-in anonymous function invoke function router.refresh()
+-in component my-favorite/page.tsx import function redirect from package next/navigation
+-add condition if (!paginatedFavorites.length && page > 1)
+-in condition if invoke function redirect()
+-open route: http://localhost:3000/account/my-favorites and delete all favorites
+-in properties.ts file, in function getPropertiesById() add condition if (!propertyIds.length)
+-open route: http://localhost:3000/account/my-favorites
+-open route: http://localhost:3000/account/my-favorites?page=2
