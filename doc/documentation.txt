@@ -1067,3 +1067,37 @@ Section 08: Build the favorites functionality
 -in component (..)login/page.tsx create and export function LoginModal() as default
 -in component toggle-favorite-button.tsx, in condition if (!tokenResult) invoke function router.push('/login')
 -open route: http://localhost:3000/property-search and click HeartIcon
+
+59. Render the login form in the login modal
+-open link: https://ui.shadcn.com/docs/components/dialog
+-type command: npx shadcn@latest add dialog
+-in component (..login)/page.tsx import dialog components from component dialog.tsx
+-import function useRouter() from package next/navigation
+-create variable const router
+-in jsx add component Dialog as parent component
+-add to component Dialog props open and onOpenChange
+-in folder components create component common-login-form.tsx
+-move logic from component login/login-form.tsx to component components/common-login-form.tsx
+-in component common-login-form.tsx, add to function CommonLoginForm() parameter onSuccess with type
+-in component login/login-form.tsx import component CommonLoginForm from component components/common-login-form.tsx
+-delete unnecessary imports and only leave variable const router
+-in jsx add component CommonLoginForm with prop onSuccess
+-in prop onSuccess invoke anonymous function
+-in anonymous function invoke function router.refresh()
+-open route: http://localhost:3000/login
+-in component (..login)/page.tsx import component CommonLoginForm from component common-login-form.tsx
+-in component DialogContent create div element
+-in div element add component CommonLoginForm with prop onSuccess
+-in prop onSuccess invoke anonymous function
+-in anonymous function invoke function router.back()
+-import component Link form package next/link
+-in component DialogFooter create span element add component Link with props href and className
+-in folder (..)login create actions.ts file
+-in actions.ts file add directive 'use server'
+-open link: https://nextjs.org/docs/app/api-reference/functions/revalidatePath
+-import function revalidatePath from package next/cache
+-create and export async function loginSuccess()
+-in function loginSuccess() invoke function revalidatePath()
+-in component (..)login/page.tsx import function loginSuccess from actions.ts file
+-in anonymous function invoke function await loginSuccess()
+-open route: http://localhost:3000/property-search and click HeartIcon
