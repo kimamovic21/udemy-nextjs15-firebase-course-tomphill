@@ -1177,3 +1177,30 @@ Section 08: Build the favorites functionality
 -in properties.ts file, in function getPropertiesById() add condition if (!propertyIds.length)
 -open route: http://localhost:3000/account/my-favorites
 -open route: http://localhost:3000/account/my-favorites?page=2
+
+
+Section 09: Build the my account Section
+
+63. Add the account page and render user details
+-in folder account create component page.tsx
+-in component account/page.tsx create and export async function AccountPage() as default
+-import function cookies from package next/headers
+-create variables const cookieStore and const token
+-add try - catch blocks
+-import type DecodedIdToken from package firebase-admin/auth
+-create variable let decodedToken with type DecodedIdToken
+-import function auth from firebase/server.ts file
+-import function redirect from package next/navigation
+-add condition if (!token)
+-in try block redeclare variable decodedToken
+-in jsx create div element for displaying user email
+-import component Label from component label.tsx
+-import card components from component card.tsx
+-in jsx add to div element Tailwind CSS classes
+-in div element add component Card
+-in component Card add components CardHeader and CardContent
+-in component CardHeader add component CardTitle with Tailwind CSS classes
+-in component CardContent add component Label
+-create variables const user and const isPasswordProvider 
+-in jsx add conditional rendering !!isPasswordProvider &&
+-open route: http://localhost:3000/account
