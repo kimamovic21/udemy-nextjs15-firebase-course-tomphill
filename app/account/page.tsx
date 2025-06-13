@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import UpdatePasswordForm from './update-password-form';
 
 const AccountPage = async () => {
   const cookieStore = await cookies();
@@ -48,9 +49,7 @@ const AccountPage = async () => {
           </div>
 
           {!!isPasswordProvider && (
-            <div>
-              Update password form
-            </div>
+            <UpdatePasswordForm />
           )}
         </CardContent>
       </Card>

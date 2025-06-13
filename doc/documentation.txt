@@ -1204,3 +1204,37 @@ Section 09: Build the my account Section
 -create variables const user and const isPasswordProvider 
 -in jsx add conditional rendering !!isPasswordProvider &&
 -open route: http://localhost:3000/account
+
+64. Implement change password form
+-in folder account create component update-password-form.tsx
+-in component update-password-form.tsx create and export async function UpdatePasswordForm() as default
+-in component account/page.tsx import component UpdatePasswordForm from component update-password-form.tsx
+-in folder validation create passwordValidation.ts file
+-in registerUser.ts and loginUser.ts file import variable passwordValidation from passwordValidation.ts file
+-in component update-password-form.tsx import variable passwordValidation from passwordValidation.ts 
+-import object z from package zod
+-create variable const formSchema
+-import functions useForm and zodResolver
+-create variable const form
+-create async function handleSubmit() with parameter data
+-add to parameter data type z.infer<typeof formSchema>
+-import form components form component form.tsx
+-in jsx add to parent div element Tailwind CSS classes
+-in parent div element add component Form with prop {...form}
+-in component Form create form element with event onSubmit
+-in form element create fieldset element with props className and disabled
+-import component Input from component input.tsx
+-import component Button from component button.tsx
+-in fieldset element add three components FormField for current password, new password and confirm new password
+-in fieldset element add component Button with prop type
+-import function useAuth from component auth.tsx
+-create variable const auth
+-in function handleSubmit() create variable const user
+-add condition if (!user?.email)
+-import object EmailAuthProvider, functions reauthenticateWithCredential and updatePassword from package firebase/auth
+-add try - catch blocks
+-in block code try invoke functions await reauthenticateWithCredential() and await updatePassword()
+-import function toast from package sonner
+-in block code try invoke function toast.success()
+-in block code catch invoke function toast.error()
+-open route: http://localhost:3000/account and change password
