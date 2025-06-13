@@ -6,10 +6,12 @@ import { Label } from '@/components/ui/label';
 import {
   Card,
   CardContent,
+  CardFooter,
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
 import UpdatePasswordForm from './update-password-form';
+import DeleteAccountButton from './delete-account-button';
 
 const AccountPage = async () => {
   const cookieStore = await cookies();
@@ -52,6 +54,16 @@ const AccountPage = async () => {
             <UpdatePasswordForm />
           )}
         </CardContent>
+
+        {!decodedToken.admin && (
+          <CardFooter className='flex flex-col items-center'>
+            <h3 className='text-red-500 text-xl font-bold mb-2'>
+              Danger Zone
+            </h3>
+
+            <DeleteAccountButton />
+          </CardFooter>
+        )}
       </Card>
     </div>
   );

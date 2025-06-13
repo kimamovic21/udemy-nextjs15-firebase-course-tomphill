@@ -1238,3 +1238,36 @@ Section 09: Build the my account Section
 -in block code try invoke function toast.success()
 -in block code catch invoke function toast.error()
 -open route: http://localhost:3000/account and change password
+
+65. Implement delete account functionality
+-in folder account create component delete-account-button.tsx
+-in component delete-account-button.tsx create and export async function DeleteAccountButton() as default
+-in component account/page.tsx import component DeleteAccountButton from component delete-account-button.tsx
+-in jsx add conditional rendering !decodedToken.admin &&
+-in conditional rendering add component CardFooter
+-in component CardFooter create h2 element with Tailwind CSS classes and add component DeleteAccountButton
+-in component delete-account-button.tsx import component Button from component button.tsx
+-in jsx add to component Button props variant and className
+-open link: https://ui.shadcn.com/docs/components/alert-dialog
+-type command: npx shadcn@latest add alert-dialog
+-import alert dialog components from component alert-dialog.tsx
+-in jsx add alert dialog components
+-import function useState from package react
+-create state variable isDeleting and set function setIsDeleting
+-create async function handleDeleteAccount()
+-import function useAuth from component auth.tsx
+-create variable const auth
+-in function handleDeleteAccount() add condition if (auth?.currentUser?.email)
+-in condition if invoke function setIsDeleting(true)
+-add try - catch blocks
+-import function deleteUser from package firebase/auth
+-import function removeToken from content/actions.ts file
+-in block try invoke function deleteUser() and removeToken()
+-import components Label and Input
+-create state variable const password and set function setPassword
+-import functions deleteUser, reauthenticateWithCredential and object EmailAuthProvider from package firebase/auth
+-in block code try invoke function await reauthenticateWithCredential()
+-import function toast from package sonner
+-in block code try invoke function toast.success()
+-in block code catch invoke function toast.error()
+-open route: http://localhost:3000/account and delete account
