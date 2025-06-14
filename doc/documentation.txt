@@ -1282,3 +1282,35 @@ Section 09: Build the my account Section
 -open route: http://localhost:3000/register and create new user
 -open route: http://localhost:3000/property-search and add favorite property
 -open route: http://localhost:3000/account and delete account
+
+67. Implement forgot password functionality
+-in folder (auth) create folder forgot-password and component page.tsx
+-in component forgot-password/page.tsx create and export async function ForgotPasswordPage() as default
+-create component forgot-password-form.tsx
+-in component forgot-password-form.tsx create and export async function ForgotPasswordForm() as default
+-in component forgot-password/page.tsx import component ForgotPasswordForm from component forgot-password-form.tsx
+-import card components from component card.tsx
+-import function useState from package react
+-import function sendPasswordResetEmail from package firebase/auth
+-import function auth from firebase/client.ts file
+-create state variable const email and set function setEmail
+-in jsx add form element as parent element
+-add to form element event onSubmit
+-in event onSubmit invoke anonymous async function
+-in anonymous async function invoke function await sendPasswordResetEmail() with two arguments
+-import component Input from component input.tsx
+-in jsx, in form element add component Input with props name, type, value and event onChange
+-import component Button from component button.tsx
+-in jsx, in form element add component Button with props type and className
+-add to form element Tailwind CSS classes
+-create async function handleForgotPassword()
+-import function toast from package sonner
+-in event onSubmit pass function handleForgotPassword
+-in middleware.ts file, in array matcher add route '/forgot-password'
+-destructure variable const { pathname } from request.nextUrl
+-update if conditions
+-open route: http://localhost:3000/register and create new user with real email
+-open route: http://localhost:3000/login and click Forgot Password button
+-open route: http://localhost:3000/forgot-password and add existing email
+-open your email inbox and check for password reset email form
+-open route: http://localhost:3000/login and sign in with new password
