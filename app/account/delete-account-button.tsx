@@ -9,6 +9,7 @@ import {
 } from 'firebase/auth';
 import { useAuth } from '@/context/auth';
 import { removeToken } from '@/context/actions';
+import { deleteUserFavorites } from './actions';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -39,6 +40,8 @@ const DeleteAccountButton = () => {
           EmailAuthProvider.credential(auth.currentUser.email, password)
         );
 
+        await deleteUserFavorites();
+
         await deleteUser(auth.currentUser);
 
         await removeToken();
@@ -64,7 +67,7 @@ const DeleteAccountButton = () => {
       <AlertDialogTrigger asChild>
         <Button
           variant='destructive'
-          className='w-full'
+          className='w-full cursor-pointer'
         >
           Delete Account
         </Button>
@@ -95,13 +98,14 @@ const DeleteAccountButton = () => {
         </AlertDialogHeader>
 
         <AlertDialogFooter>
-          <AlertDialogCancel>
+          <AlertDialogCancel className='cursor-pointer'>
             Cancel
           </AlertDialogCancel>
 
           <AlertDialogAction
             onClick={handleDeleteAccount}
             disabled={isDeleting}
+            className='cursor-pointer'
           >
             {isDeleting ? 'Deleting...' : 'Delete Account'}
           </AlertDialogAction>

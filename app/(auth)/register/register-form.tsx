@@ -86,7 +86,7 @@ const RegisterForm = () => {
               return (
                 <FormItem>
                   <FormLabel>
-                    Your username
+                    Your email
                   </FormLabel>
 
                   <FormControl>
@@ -150,7 +150,10 @@ const RegisterForm = () => {
             }}
           />
 
-          <Button type='submit'>
+          <Button 
+            type='submit'
+            className='cursor-pointer'  
+          >
             Register
           </Button>
 

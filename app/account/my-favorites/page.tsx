@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation';
+import { EyeIcon } from 'lucide-react';
 import { getUserFavorites } from '@/data/favorites';
 import { getPropertiesById } from '@/data/properties';
 import { Button } from '@/components/ui/button';
@@ -11,9 +12,8 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
-import PropertyStatusBadge from '@/components/property-status-badge';
-import { EyeIcon, Trash2Icon } from 'lucide-react';
 import Link from 'next/link';
+import PropertyStatusBadge from '@/components/property-status-badge';
 import RemoveFavoriteButton from './remove-favorite-button';
 
 const MyFavoritesPage = async ({

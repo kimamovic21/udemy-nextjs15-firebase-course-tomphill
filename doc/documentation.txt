@@ -1270,4 +1270,15 @@ Section 09: Build the my account Section
 -import function toast from package sonner
 -in block code try invoke function toast.success()
 -in block code catch invoke function toast.error()
+-open route: http://localhost:3000/register and create new user
+-open route: http://localhost:3000/account and delete account
+
+66. Delete user favorites on account deletion
+-in folder account create actions.ts file
+-in actions.ts file create and export async function deleteUserFavorites()
+-in component delete-account-button.tsx import function deleteUserFavorites from actions.ts file
+-in block code try invoke function await deleteUserFavorites()
+-in component remove-favorites-button.tsx import alert dialog components from component alert-dialog.tsx
+-open route: http://localhost:3000/register and create new user
+-open route: http://localhost:3000/property-search and add favorite property
 -open route: http://localhost:3000/account and delete account
