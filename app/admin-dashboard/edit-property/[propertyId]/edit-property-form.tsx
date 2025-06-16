@@ -51,8 +51,9 @@ const EditPropertyForm = ({
 
     const storageTasks: (UploadTask | Promise<void>)[] = [];
 
-    const imagesToDelete = images
-      .filter((image) => !newImages.find((newImage) => image === newImage.url))
+    const imagesToDelete = images.filter(
+      (image) => !newImages.find((newImage) => image === newImage.url)
+    );
 
     imagesToDelete.forEach((image) => {
       storageTasks.push(deleteObject(ref(storage, image)));

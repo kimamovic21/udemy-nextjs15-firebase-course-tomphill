@@ -7,6 +7,7 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import EditPropertyForm from './edit-property-form';
+import DeletePropertyButton from './delete-property-button';
 
 const EditPropertyPage = async ({
   params
@@ -28,8 +29,12 @@ const EditPropertyPage = async ({
 
       <Card className='mt-5'>
         <CardHeader>
-          <CardTitle className='text-3xl font-bold'>
-            Edit Property
+          <CardTitle className='text-3xl font-bold flex justify-between'>
+            <span>Edit Property</span>
+            <DeletePropertyButton
+              propertyId={property.id}
+              images={property.images || []}
+            />
           </CardTitle>
         </CardHeader>
 

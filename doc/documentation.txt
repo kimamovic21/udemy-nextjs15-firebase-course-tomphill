@@ -1346,3 +1346,34 @@ Section 10: Extras
 -in div element create h2 element with Tailwind CSS classes
 -add component Button with props asChild and className
 -open route: http://localhost:3000
+
+71. Implement delete property functionality
+-in folder [propertyId]/page.tsx create component delete-property-button.tsx
+-in component delete-property-button.tsx create and export function DeletePropertyButton() as default
+-create async function handleDeleteProperty()
+-in component Button, in event onClick pass function handleDeleteProperty()
+-in component [propertyId]/page.tsx import component DeletePropertyButton from component delete-property-button.tsx
+-in jsx, in component CardTitle add component DeletePropertyButton with props propertyId and images
+-add to function DeletePropertyButton() parameters propertyId and images with types
+-in component delete-property-button.tsx import functions deleteObject and ref from package firebase/storage
+-import object storage from firebase/client.ts file
+-in function handleDeleteProperty() create variable const storageTasks with type Promise<void>[] 
+-invoke function images.forEach()
+-invoke function await Promise.all(storageTasks)
+-create variable const token
+-add condition if(!token) return
+-in [propertyId]/actions.ts file create and export async function deleteProperty()
+-add to function deleteProperty() two parameters with type string
+-create variable const verifiedToken 
+-add condition if (!verifiedToken.admin)
+-invoke function await firestore.collection()
+-in component delete-property-button.tsx import function deleteProperty from actions.ts file
+-in function handleDeleteProperty() invoke function deleteProperty() with two arguments
+-after condition if(!token) return invoke function setIsDeleting(true)
+-after invoking function await deleteProperty() invoke function setIsDeleting(false)
+-in function add try - catch blocks
+-import functions useRouter and toast
+-in block try invoke function toast.success()
+-in block catch invoke function toast.error()
+-invoke function router.push('/admin-dashboard')
+-open route: http://localhost:3000/admin-dashboard/edit-property/[propertyId] and delete property

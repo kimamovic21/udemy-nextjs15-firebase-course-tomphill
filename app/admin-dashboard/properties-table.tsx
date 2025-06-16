@@ -41,7 +41,7 @@ const PropertiesTable = async ({
               <TableHead>Address </TableHead>
               <TableHead>Listing Price</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Edit</TableHead>
+              <TableHead className='text-end'>View/Edit</TableHead>
             </TableRow>
           </TableHeader>
 
