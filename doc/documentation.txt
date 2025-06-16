@@ -1314,3 +1314,11 @@ Section 09: Build the my account Section
 -open route: http://localhost:3000/forgot-password and add existing email
 -open your email inbox and check for password reset email form
 -open route: http://localhost:3000/login and sign in with new password
+
+
+Section 10: Extras
+
+68. Enable caching for property pages
+-in component [propertyId]/page.tsx create and export variable const dynamic
+-in [propertyId]/actions.ts file import function revalidatePath from package next/cache
+-in function updateProperty() invoke function revalidatePath()

@@ -1,6 +1,5 @@
-import { ArrowLeftIcon, BedIcon, BathIcon } from 'lucide-react';
+import { BedIcon, BathIcon } from 'lucide-react';
 import { getPropertyById } from '@/data/properties';
-import { Button } from '@/components/ui/button';
 import {
   Carousel,
   CarouselContent,
@@ -10,10 +9,11 @@ import {
 } from '@/components/ui/carousel';
 import numeral from 'numeral';
 import ReactMarkdown from 'react-markdown'
-import Link from 'next/link';
 import Image from 'next/image';
 import PropertyStatusBadge from '@/components/property-status-badge';
 import BackButton from './back-button';
+
+export const dynamic = 'force-static';
 
 const PropertyPage = async ({
   params

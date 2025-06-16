@@ -1,5 +1,6 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
 import { auth, firestore } from '@/firebase/server';
 import { type Property } from '@/types/property';
 import { propertyDataSchema } from '@/validation/propertySchema';
@@ -32,4 +33,6 @@ export async function updateProperty(data: Property, authToken: string) {
       ...propertyData,
       updated: new Date(),
     });
+
+  revalidatePath(`/property/${id}`);
 };
