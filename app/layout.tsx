@@ -26,7 +26,7 @@ const RootLayout = ({
     <html lang='en'>
       <AuthProvider>
         <body className={`${poppins.className} antialiased`}>
-          <nav className='bg-sky-950 text-white p-5 h-24 flex items-center justify-between'>
+          <nav className='relative z-10 bg-sky-950 text-white p-5 h-24 flex items-center justify-between'>
             <Link
               href='/'
               className='text-3xl tracking-widest flex gap-2 items-center uppercase'

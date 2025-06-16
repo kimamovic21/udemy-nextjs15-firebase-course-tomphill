@@ -1333,3 +1333,16 @@ Section 10: Extras
 -in empty fragment create div element and add component Skeleton with Tailwind CSS classes
 -in folder [propertyId]/page.tsx create component loading.tsx
 -open route: http://localhost:3000/property-search
+
+70. Build the landing page
+-in folder public add hero image
+-in component app/page.tsx create main element as parent element with Tailwind CSS classes
+-import component Image from package next/image
+-in jsx, in main element add component Image with props
+-create div element with Tailwind CSS classes
+-in component layout.tsx add to nav element Tailwind CSS classes relative and z-10
+-in component app/page.tsx import components Link, Button and SearchIcon
+-create div element with Tailwind CSS flex classes
+-in div element create h2 element with Tailwind CSS classes
+-add component Button with props asChild and className
+-open route: http://localhost:3000
