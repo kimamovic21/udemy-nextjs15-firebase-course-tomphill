@@ -123,7 +123,7 @@ const FiltersForm = () => {
 
         <Button
           type='submit'
-          className='mt-auto'
+          className='mt-auto cursor-pointer'
         >
           Search
         </Button>

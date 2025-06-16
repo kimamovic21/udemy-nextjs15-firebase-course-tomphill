@@ -1377,3 +1377,9 @@ Section 10: Extras
 -in block catch invoke function toast.error()
 -invoke function router.push('/admin-dashboard')
 -open route: http://localhost:3000/admin-dashboard/edit-property/[propertyId] and delete property
+
+72. Deploy to Vercel
+-open web page https://vercel.com
+-deploy your project on Vercel
+-in eslint.config.mjs file add rule for no-empty-object-type
+-add in your Vercel project env variables
