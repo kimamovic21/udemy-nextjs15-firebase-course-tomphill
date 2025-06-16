@@ -1322,3 +1322,14 @@ Section 10: Extras
 -in component [propertyId]/page.tsx create and export variable const dynamic
 -in [propertyId]/actions.ts file import function revalidatePath from package next/cache
 -in function updateProperty() invoke function revalidatePath()
+
+69. Add loading state to app
+-open link: https://ui.shadcn.com/docs/components/skeleton
+-type command: npx shadcn@latest add skeleton
+-in folder property-search create component loading.tsx
+-in component loading.tsx create and export function Loading() as default
+-import component Skeleton from component skeleton.tsx
+-in jsx add empty fragment as parent element
+-in empty fragment create div element and add component Skeleton with Tailwind CSS classes
+-in folder [propertyId]/page.tsx create component loading.tsx
+-open route: http://localhost:3000/property-search
